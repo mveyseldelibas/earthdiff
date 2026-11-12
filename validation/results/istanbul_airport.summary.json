@@ -1,0 +1,189 @@
+{
+  "name": "Istanbul Airport (Turkey), 2017 vs 2019",
+  "version": "0.1.0",
+  "generated": "2026-11-02 17:35 UTC",
+  "before_label": "2017-06 .. 2017-09",
+  "after_label": "2019-06 .. 2019-08",
+  "aoi_km2": 320.93,
+  "resolution_m": 10.0,
+  "valid_fraction": 0.9829,
+  "scenes_before": 8,
+  "scenes_after": 8,
+  "mmu_ha": 0.5,
+  "sensitivity": "default",
+  "backend": "earth-search",
+  "backend_attribution": "Element 84 Earth Search (Sentinel-2 L2A COGs on AWS Open Data)",
+  "before_period": [
+    "2017-06-01",
+    "2017-09-30"
+  ],
+  "after_period": [
+    "2019-06-01",
+    "2019-08-31"
+  ],
+  "totals": {
+    "vegetation_loss": {
+      "label": "Vegetation loss",
+      "polygons": 212,
+      "area_ha": 656.32
+    },
+    "vegetation_gain": {
+      "label": "Vegetation gain",
+      "polygons": 149,
+      "area_ha": 265.46
+    },
+    "new_water": {
+      "label": "New water",
+      "polygons": 22,
+      "area_ha": 61.71
+    },
+    "water_loss": {
+      "label": "Water loss",
+      "polygons": 25,
+      "area_ha": 139.16
+    },
+    "new_bare_or_built": {
+      "label": "New bare soil / built-up",
+      "polygons": 9,
+      "area_ha": 8.08
+    }
+  },
+  "changed_fraction_of_aoi": 0.0352,
+  "warnings": [],
+  "scenes": [
+    {
+      "period": "before (2017-06 .. 2017-09)",
+      "id": "S2A_35TPF_20170612_0_L2A",
+      "date": "2017-06-12",
+      "cloud_cover": 16.347053,
+      "valid_fraction": 0.5656
+    },
+    {
+      "period": "before (2017-06 .. 2017-09)",
+      "id": "S2B_35TPF_20170724_0_L2A",
+      "date": "2017-07-24",
+      "cloud_cover": 0.779868,
+      "valid_fraction": 0.8713
+    },
+    {
+      "period": "before (2017-06 .. 2017-09)",
+      "id": "S2B_35TPF_20170727_0_L2A",
+      "date": "2017-07-27",
+      "cloud_cover": 17.868588,
+      "valid_fraction": 0.8615
+    },
+    {
+      "period": "before (2017-06 .. 2017-09)",
+      "id": "S2B_35TPF_20170806_0_L2A",
+      "date": "2017-08-06",
+      "cloud_cover": 14.001836,
+      "valid_fraction": 0.7933
+    },
+    {
+      "period": "before (2017-06 .. 2017-09)",
+      "id": "S2B_35TPF_20170813_0_L2A",
+      "date": "2017-08-13",
+      "cloud_cover": 7.59454,
+      "valid_fraction": 0.6027
+    },
+    {
+      "period": "before (2017-06 .. 2017-09)",
+      "id": "S2B_35TPF_20170823_0_L2A",
+      "date": "2017-08-23",
+      "cloud_cover": 30.634957,
+      "valid_fraction": 0.4384
+    },
+    {
+      "period": "before (2017-06 .. 2017-09)",
+      "id": "S2B_35TPF_20170905_0_L2A",
+      "date": "2017-09-05",
+      "cloud_cover": 10.61382,
+      "valid_fraction": 0.8388
+    },
+    {
+      "period": "before (2017-06 .. 2017-09)",
+      "id": "S2B_35TPF_20170912_0_L2A",
+      "date": "2017-09-12",
+      "cloud_cover": 0.761396,
+      "valid_fraction": 0.8677
+    },
+    {
+      "period": "after (2019-06 .. 2019-08)",
+      "id": "S2B_35TPF_20190607_1_L2A",
+      "date": "2019-06-07",
+      "cloud_cover": 0.820447,
+      "valid_fraction": 0.9998
+    },
+    {
+      "period": "after (2019-06 .. 2019-08)",
+      "id": "S2B_35TPF_20190624_1_L2A",
+      "date": "2019-06-24",
+      "cloud_cover": 0.006921,
+      "valid_fraction": 0.9994
+    },
+    {
+      "period": "after (2019-06 .. 2019-08)",
+      "id": "S2B_35TPF_20190707_1_L2A",
+      "date": "2019-07-07",
+      "cloud_cover": 0.151104,
+      "valid_fraction": 0.9985
+    },
+    {
+      "period": "after (2019-06 .. 2019-08)",
+      "id": "S2A_35TPF_20190801_1_L2A",
+      "date": "2019-08-01",
+      "cloud_cover": 0.129532,
+      "valid_fraction": 0.9953
+    },
+    {
+      "period": "after (2019-06 .. 2019-08)",
+      "id": "S2B_35TPF_20190803_1_L2A",
+      "date": "2019-08-03",
+      "cloud_cover": 0.035363,
+      "valid_fraction": 0.999
+    },
+    {
+      "period": "after (2019-06 .. 2019-08)",
+      "id": "S2B_35TPF_20190806_1_L2A",
+      "date": "2019-08-06",
+      "cloud_cover": 1.642243,
+      "valid_fraction": 0.9834
+    },
+    {
+      "period": "after (2019-06 .. 2019-08)",
+      "id": "S2B_35TPF_20190813_1_L2A",
+      "date": "2019-08-13",
+      "cloud_cover": 0.021381,
+      "valid_fraction": 0.9973
+    },
+    {
+      "period": "after (2019-06 .. 2019-08)",
+      "id": "S2B_35TPF_20190826_1_L2A",
+      "date": "2019-08-26",
+      "cloud_cover": 4.363414,
+      "valid_fraction": 0.9957
+    }
+  ],
+  "thresholds": {
+    "veg_min_before": 0.4,
+    "veg_drop": 0.25,
+    "veg_min_after": 0.4,
+    "veg_rise": 0.25,
+    "water_mndwi": 0.1,
+    "land_mndwi": -0.05,
+    "water_ndvi_max": 0.3,
+    "water_delta": 0.25,
+    "bare_rise": 0.15,
+    "bare_ndvi_max": 0.25
+  },
+  "attribution": "Contains modified Copernicus Sentinel data 2017, 2019",
+  "files": {
+    "geojson": "changes.geojson",
+    "class_tif": "change_class.tif",
+    "before": "before.png",
+    "after": "after.png",
+    "change_map": "change_map.png",
+    "overview": "overview.png",
+    "report": "report.html"
+  }
+}

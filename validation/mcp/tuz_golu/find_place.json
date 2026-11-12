@@ -1,0 +1,192 @@
+{
+ "status": "ambiguous",
+ "query": "Tuz Gölü",
+ "candidates": [
+  {
+   "rank": 1,
+   "name": "Lake Tuz",
+   "display_name": "Lake Tuz, Kulu, Konya, Central Anatolia Region, Turkey",
+   "osm_kind": "water/lake",
+   "osm": "relation/2411676",
+   "center_lon_lat": [
+    33.29154,
+    38.85944
+   ],
+   "bbox_west_south_east_north": [
+    33.17728,
+    38.49957,
+    33.72487,
+    39.12947
+   ],
+   "area_km2": 3323.0,
+   "fits_analysis_limit": false,
+   "narrowing_options": {
+    "why": "The bounding box is 3,323 km2 and the analysis limit is 400 km2. Ask the user which part matters, or offer one of these.",
+    "centered_bbox": {
+     "bbox_west_south_east_north": [
+      33.36096,
+      38.71086,
+      33.54119,
+      38.91818
+     ],
+     "area_km2": 360.0
+    },
+    "tiles": [
+     {
+      "label": "north-west",
+      "bbox_west_south_east_north": [
+       33.17728,
+       38.9195,
+       33.35981,
+       39.12947
+      ],
+      "area_km2": 368.1
+     },
+     {
+      "label": "north-middle",
+      "bbox_west_south_east_north": [
+       33.35981,
+       38.9195,
+       33.54234,
+       39.12947
+      ],
+      "area_km2": 368.2
+     },
+     {
+      "label": "north-east",
+      "bbox_west_south_east_north": [
+       33.54234,
+       38.9195,
+       33.72487,
+       39.12947
+      ],
+      "area_km2": 368.2
+     },
+     {
+      "label": "middle-west",
+      "bbox_west_south_east_north": [
+       33.17728,
+       38.70954,
+       33.35981,
+       38.9195
+      ],
+      "area_km2": 369.2
+     },
+     {
+      "label": "centre",
+      "bbox_west_south_east_north": [
+       33.35981,
+       38.70954,
+       33.54234,
+       38.9195
+      ],
+      "area_km2": 369.2
+     },
+     {
+      "label": "middle-east",
+      "bbox_west_south_east_north": [
+       33.54234,
+       38.70954,
+       33.72487,
+       38.9195
+      ],
+      "area_km2": 369.2
+     },
+     {
+      "label": "south-west",
+      "bbox_west_south_east_north": [
+       33.17728,
+       38.49957,
+       33.35981,
+       38.70954
+      ],
+      "area_km2": 370.3
+     },
+     {
+      "label": "south-middle",
+      "bbox_west_south_east_north": [
+       33.35981,
+       38.49957,
+       33.54234,
+       38.70954
+      ],
+      "area_km2": 370.3
+     },
+     {
+      "label": "south-east",
+      "bbox_west_south_east_north": [
+       33.54234,
+       38.49957,
+       33.72487,
+       38.70954
+      ],
+      "area_km2": 370.3
+     }
+    ],
+    "tiles_note": null
+   }
+  },
+  {
+   "rank": 2,
+   "name": "Tuz Gölü",
+   "display_name": "Tuz Gölü, Küçükanafarta Köyü, Eceabat, Canakkale, Marmara Region, Turkey",
+   "osm_kind": "water/lake",
+   "osm": "way/135038044",
+   "center_lon_lat": [
+    26.25929,
+    40.29627
+   ],
+   "bbox_west_south_east_north": [
+    26.24679,
+    40.28729,
+    26.27253,
+    40.30526
+   ],
+   "area_km2": 4.36,
+   "fits_analysis_limit": true
+  },
+  {
+   "rank": 3,
+   "name": "Tuz Gölü",
+   "display_name": "Tuz Gölü, Ayvalık, Balıkesir, Marmara Region, Turkey",
+   "osm_kind": "water/lake",
+   "osm": "relation/18108042",
+   "center_lon_lat": [
+    26.71596,
+    39.26412
+   ],
+   "bbox_west_south_east_north": [
+    26.70859,
+    39.25868,
+    26.72344,
+    39.26988
+   ],
+   "area_km2": 1.59,
+   "fits_analysis_limit": true
+  },
+  {
+   "rank": 4,
+   "name": "Tuz Gölü",
+   "display_name": "Tuz Gölü, Aksaray, Central Anatolia Region, Turkey",
+   "osm_kind": "natural/water",
+   "osm": "way/10354856",
+   "center_lon_lat": [
+    33.62323,
+    38.4963
+   ],
+   "bbox_west_south_east_north": [
+    33.62069,
+    38.49429,
+    33.6267,
+    38.49831
+   ],
+   "area_km2": 0.23,
+   "fits_analysis_limit": true
+  }
+ ],
+ "analysis_limit_km2": 400.0,
+ "margin_km": 0.0,
+ "next_step": "Several different places match. Do not guess: show the candidates and ask which one the user means (unless the user already made it clear, for example 'the lake'; then say which candidate you used).",
+ "from_cache": true,
+ "attribution": "Place search: (c) OpenStreetMap contributors (ODbL), via Nominatim"
+}

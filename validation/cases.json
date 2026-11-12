@@ -1,0 +1,26 @@
+{
+  "manavgat": {
+    "name": "Manavgat wildfire (Antalya, Turkey), July-Aug 2021",
+    "args": ["--bbox", "31.45,36.90,31.70,37.06", "--before", "2021-07-01/2021-07-27", "--after", "2021-08-10/2021-09-10"]
+  },
+  "manavgat_wide": {
+    "name": "Manavgat wildfire - wide window (coarse 30 m)",
+    "args": ["--bbox", "31.2,36.78,31.9,37.15", "--before", "2021-07-01/2021-07-27", "--after", "2021-08-10/2021-09-10", "--resolution", "30", "--max-area-km2", "3000"]
+  },
+  "lake_mead": {
+    "name": "Lake Mead (Nevada/Arizona, USA), Jul 2019 vs Jul 2022",
+    "args": ["--bbox=-114.80,36.05,-114.60,36.20", "--before", "2019-07", "--after", "2022-07"]
+  },
+  "istanbul_airport": {
+    "name": "Istanbul Airport (Turkey), 2017 vs 2019",
+    "args": ["--bbox", "28.62,41.20,28.85,41.35", "--before", "2017-06/2017-09", "--after", "2019-06/2019-08"]
+  },
+  "thessaly_flood": {
+    "name": "Thessaly flood after Storm Daniel (Greece), Sep 2023",
+    "args": ["--bbox", "22.70,39.38,22.92,39.52", "--before", "2023-08-15/2023-08-31", "--after", "2023-09-08/2023-09-30"]
+  },
+  "control_belgrad": {
+    "name": "Control: northern Istanbul forest + suburbs (Belgrad Forest area), Jul 2022 vs Jul 2023 - expected: almost no change",
+    "args": ["--bbox", "28.92,41.15,29.12,41.24", "--before", "2022-07", "--after", "2023-07"]
+  }
+}

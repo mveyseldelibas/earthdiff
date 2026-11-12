@@ -1,0 +1,43 @@
+{
+ "box": [
+  33.36096,
+  38.71086,
+  33.54119,
+  38.91818
+ ],
+ "grid_m": 30,
+ "reference_pixels": 160953,
+ "reference": "pixels very bright in late summer 2021 (dry salt crust)",
+ "windows": {
+  "spring_2021": {
+   "scenes": 8,
+   "valid_share_of_reference": 0.994,
+   "median_visible_reflectance": 0.255,
+   "median_swir1_reflectance": 0.002,
+   "share_mndwi_water (MNDWI>0.10 and NDVI<0.30, the default rule)": 0.872,
+   "share_ndwi_positive ((green-nir)/(green+nir)>0)": 0.844,
+   "share_dark_wet (mean visible < 0.15)": 0.072,
+   "share_still_very_bright": 0.536
+  },
+  "late_summer_2021": {
+   "scenes": 8,
+   "valid_share_of_reference": 1.0,
+   "median_visible_reflectance": 0.443,
+   "median_swir1_reflectance": 0.117,
+   "share_mndwi_water (MNDWI>0.10 and NDVI<0.30, the default rule)": 0.862,
+   "share_ndwi_positive ((green-nir)/(green+nir)>0)": 0.015,
+   "share_dark_wet (mean visible < 0.15)": 0.0,
+   "share_still_very_bright": 1.0
+  },
+  "late_summer_2019": {
+   "scenes": 8,
+   "valid_share_of_reference": 0.995,
+   "median_visible_reflectance": 0.507,
+   "median_swir1_reflectance": 0.089,
+   "share_mndwi_water (MNDWI>0.10 and NDVI<0.30, the default rule)": 0.866,
+   "share_ndwi_positive ((green-nir)/(green+nir)>0)": 0.028,
+   "share_dark_wet (mean visible < 0.15)": 0.0,
+   "share_still_very_bright": 0.948
+  }
+ }
+}

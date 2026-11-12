@@ -1,0 +1,189 @@
+{
+  "name": "Manavgat wildfire - wide window (coarse 30 m)",
+  "version": "0.1.0",
+  "generated": "2026-11-02 17:46 UTC",
+  "before_label": "2021-07-01 .. 2021-07-27",
+  "after_label": "2021-08-10 .. 2021-09-10",
+  "aoi_km2": 2558.65,
+  "resolution_m": 30.0,
+  "valid_fraction": 1.0,
+  "scenes_before": 8,
+  "scenes_after": 8,
+  "mmu_ha": 0.5,
+  "sensitivity": "default",
+  "backend": "earth-search",
+  "backend_attribution": "Element 84 Earth Search (Sentinel-2 L2A COGs on AWS Open Data)",
+  "before_period": [
+    "2021-07-01",
+    "2021-07-27"
+  ],
+  "after_period": [
+    "2021-08-10",
+    "2021-09-10"
+  ],
+  "totals": {
+    "vegetation_loss": {
+      "label": "Vegetation loss",
+      "polygons": 1271,
+      "area_ha": 31361.94
+    },
+    "vegetation_gain": {
+      "label": "Vegetation gain",
+      "polygons": 769,
+      "area_ha": 2006.1
+    },
+    "new_water": {
+      "label": "New water",
+      "polygons": 0,
+      "area_ha": 0
+    },
+    "water_loss": {
+      "label": "Water loss",
+      "polygons": 17,
+      "area_ha": 38.07
+    },
+    "new_bare_or_built": {
+      "label": "New bare soil / built-up",
+      "polygons": 1183,
+      "area_ha": 1518.75
+    }
+  },
+  "changed_fraction_of_aoi": 0.1365,
+  "warnings": [],
+  "scenes": [
+    {
+      "period": "before (2021-07-01 .. 2021-07-27)",
+      "id": "S2A_36SUF_20210705_2_L2A",
+      "date": "2021-07-05",
+      "cloud_cover": 2.585585,
+      "valid_fraction": 0.5874
+    },
+    {
+      "period": "before (2021-07-01 .. 2021-07-27)",
+      "id": "S2B_36SUF_20210710_3_L2A",
+      "date": "2021-07-10",
+      "cloud_cover": 6.623715,
+      "valid_fraction": 0.2609
+    },
+    {
+      "period": "before (2021-07-01 .. 2021-07-27)",
+      "id": "S2A_36SUF_20210715_1_L2A",
+      "date": "2021-07-15",
+      "cloud_cover": 0.000269,
+      "valid_fraction": 0.6956
+    },
+    {
+      "period": "before (2021-07-01 .. 2021-07-27)",
+      "id": "S2A_36SUG_20210715_1_L2A",
+      "date": "2021-07-15",
+      "cloud_cover": 0.045793,
+      "valid_fraction": 0.544
+    },
+    {
+      "period": "before (2021-07-01 .. 2021-07-27)",
+      "id": "S2B_36SUF_20210720_1_L2A",
+      "date": "2021-07-20",
+      "cloud_cover": 0.034197,
+      "valid_fraction": 0.6956
+    },
+    {
+      "period": "before (2021-07-01 .. 2021-07-27)",
+      "id": "S2B_36SUG_20210720_1_L2A",
+      "date": "2021-07-20",
+      "cloud_cover": 0.000358,
+      "valid_fraction": 0.544
+    },
+    {
+      "period": "before (2021-07-01 .. 2021-07-27)",
+      "id": "S2A_36SUF_20210725_1_L2A",
+      "date": "2021-07-25",
+      "cloud_cover": 14.24835,
+      "valid_fraction": 0.3634
+    },
+    {
+      "period": "before (2021-07-01 .. 2021-07-27)",
+      "id": "S2A_36SUG_20210725_1_L2A",
+      "date": "2021-07-25",
+      "cloud_cover": 37.740237,
+      "valid_fraction": 0.1477
+    },
+    {
+      "period": "after (2021-08-10 .. 2021-09-10)",
+      "id": "S2A_36SUF_20210814_1_L2A",
+      "date": "2021-08-14",
+      "cloud_cover": 0.036088,
+      "valid_fraction": 0.6957
+    },
+    {
+      "period": "after (2021-08-10 .. 2021-09-10)",
+      "id": "S2B_36SUF_20210819_1_L2A",
+      "date": "2021-08-19",
+      "cloud_cover": 3.412367,
+      "valid_fraction": 0.6854
+    },
+    {
+      "period": "after (2021-08-10 .. 2021-09-10)",
+      "id": "S2A_36SUF_20210824_1_L2A",
+      "date": "2021-08-24",
+      "cloud_cover": 0.024817,
+      "valid_fraction": 0.6948
+    },
+    {
+      "period": "after (2021-08-10 .. 2021-09-10)",
+      "id": "S2A_36SUG_20210824_1_L2A",
+      "date": "2021-08-24",
+      "cloud_cover": 0.018626,
+      "valid_fraction": 0.544
+    },
+    {
+      "period": "after (2021-08-10 .. 2021-09-10)",
+      "id": "S2B_36SUF_20210829_1_L2A",
+      "date": "2021-08-29",
+      "cloud_cover": 4.198018,
+      "valid_fraction": 0.6739
+    },
+    {
+      "period": "after (2021-08-10 .. 2021-09-10)",
+      "id": "S2A_36SUF_20210903_1_L2A",
+      "date": "2021-09-03",
+      "cloud_cover": 0.001221,
+      "valid_fraction": 0.6957
+    },
+    {
+      "period": "after (2021-08-10 .. 2021-09-10)",
+      "id": "S2A_36SUG_20210903_1_L2A",
+      "date": "2021-09-03",
+      "cloud_cover": 1.50599,
+      "valid_fraction": 0.544
+    },
+    {
+      "period": "after (2021-08-10 .. 2021-09-10)",
+      "id": "S2B_36SUF_20210908_2_L2A",
+      "date": "2021-09-08",
+      "cloud_cover": 0.171064,
+      "valid_fraction": 0.6952
+    }
+  ],
+  "thresholds": {
+    "veg_min_before": 0.4,
+    "veg_drop": 0.25,
+    "veg_min_after": 0.4,
+    "veg_rise": 0.25,
+    "water_mndwi": 0.1,
+    "land_mndwi": -0.05,
+    "water_ndvi_max": 0.3,
+    "water_delta": 0.25,
+    "bare_rise": 0.15,
+    "bare_ndvi_max": 0.25
+  },
+  "attribution": "Contains modified Copernicus Sentinel data 2021",
+  "files": {
+    "geojson": "changes.geojson",
+    "class_tif": "change_class.tif",
+    "before": "before.png",
+    "after": "after.png",
+    "change_map": "change_map.png",
+    "overview": "overview.png",
+    "report": "report.html"
+  }
+}

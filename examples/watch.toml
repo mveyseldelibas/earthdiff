@@ -1,0 +1,18 @@
+# earthdiff watch config. Run it once a month from cron / Windows Task Scheduler / CI:
+#   earthdiff watch examples/watch.toml
+# earthdiff never installs a scheduler for you.
+[defaults]
+out_dir = "watch-output"      # relative to this file
+backend = "earth-search"
+sensitivity = "default"       # strict | default | sensitive
+mmu_ha = 0.5
+
+[[area]]
+name = "example-forest"
+aoi = "aoi.geojson"
+compare = "previous_year"     # after = last full month, before = same month one year earlier
+
+[[area]]
+name = "example-reservoir"
+bbox = [-114.80, 36.05, -114.60, 36.20]
+compare = "previous_month"    # compare with the month before (reservoir level tracking)

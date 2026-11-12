@@ -1,0 +1,80 @@
+{
+ "status": "ready",
+ "today": "2026-11-06",
+ "area": {
+  "bbox_west_south_east_north": [
+   32.7,
+   37.58,
+   32.78,
+   37.63
+  ],
+  "center_lon_lat": [
+   32.74,
+   37.605
+  ],
+  "area_km2": 39.17
+ },
+ "before_window": {
+  "label": "2023-05",
+  "start": "2023-05-01",
+  "end": "2023-05-31",
+  "defaulted_to_same_period_last_year": false
+ },
+ "after_window": {
+  "label": "2023-07",
+  "start": "2023-07-01",
+  "end": "2023-07-31"
+ },
+ "season_gap_days": 61,
+ "resolution_m": 20.0,
+ "grid_pixels": 99400,
+ "candidate_scenes": {
+  "before": 10,
+  "after": 11,
+  "before_dates": [
+   "2023-05-01",
+   "2023-05-03",
+   "2023-05-08",
+   "2023-05-13",
+   "2023-05-16",
+   "2023-05-18",
+   "2023-05-21",
+   "2023-05-23",
+   "2023-05-26",
+   "2023-05-31"
+  ],
+  "after_dates": [
+   "2023-07-02",
+   "2023-07-05",
+   "2023-07-07",
+   "2023-07-12",
+   "2023-07-15",
+   "2023-07-17",
+   "2023-07-20",
+   "2023-07-22",
+   "2023-07-25",
+   "2023-07-27",
+   "2023-07-30"
+  ]
+ },
+ "expected_runtime": "usually under 1 minute",
+ "seasonal_check": {
+  "enabled": false,
+  "earlier_years_checked": 2,
+  "extra_windows": [
+   "2022-05",
+   "2022-07",
+   "2021-05",
+   "2021-07"
+  ],
+  "extra_composites_at_most": 4,
+  "extra_time": "typically adds 20 to 80 seconds (small area, red and NIR only, up to 3 scenes per window); it is off by default",
+  "what_it_does": "flags vegetation-loss polygons whose NDVI also fell in the same windows of earlier years (likely harvest or a seasonal cycle); polygons are never removed"
+ },
+ "warnings": [
+  "The two windows are 61 days apart in the seasonal cycle. Vegetation and water change naturally with the season: compare the same time of year in different years to avoid false alarms.",
+  "Most candidate scenes in the before window are cloudy (median scene cloud cover 60%); the cloud-free share of the area may be low."
+ ],
+ "next_step": "Call detect_change with the same arguments.",
+ "attribution": "Scene search: Element 84 Earth Search (Sentinel-2 L2A COGs on AWS Open Data)"
+}

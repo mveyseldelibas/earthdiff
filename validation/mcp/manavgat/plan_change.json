@@ -1,0 +1,67 @@
+{
+ "status": "ready",
+ "today": "2026-11-06",
+ "area": {
+  "bbox_west_south_east_north": [
+   31.51221,
+   36.86376,
+   31.65377,
+   37.12127
+  ],
+  "center_lon_lat": [
+   31.58299,
+   36.99251
+  ],
+  "area_km2": 359.98
+ },
+ "before_window": {
+  "label": "2021-07-01 .. 2021-07-27",
+  "start": "2021-07-01",
+  "end": "2021-07-27",
+  "defaulted_to_same_period_last_year": false
+ },
+ "after_window": {
+  "label": "2021-08-10 .. 2021-09-10",
+  "start": "2021-08-10",
+  "end": "2021-09-10"
+ },
+ "season_gap_days": 42,
+ "resolution_m": 20.0,
+ "grid_pixels": 938228,
+ "candidate_scenes": {
+  "before": 10,
+  "after": 12,
+  "before_dates": [
+   "2021-07-05",
+   "2021-07-10",
+   "2021-07-15",
+   "2021-07-20",
+   "2021-07-25"
+  ],
+  "after_dates": [
+   "2021-08-14",
+   "2021-08-19",
+   "2021-08-24",
+   "2021-08-29",
+   "2021-09-03",
+   "2021-09-08"
+  ]
+ },
+ "expected_runtime": "usually 1 to 3 minutes",
+ "seasonal_check": {
+  "enabled": false,
+  "earlier_years_checked": 2,
+  "extra_windows": [
+   "2020-07-01 .. 2020-07-27",
+   "2020-08-10 .. 2020-09-10",
+   "2019-07-01 .. 2019-07-27",
+   "2019-08-10 .. 2019-09-10"
+  ],
+  "extra_composites_at_most": 4,
+  "extra_time": "typically adds 20 to 80 seconds (small area, red and NIR only, up to 3 scenes per window); it is off by default",
+  "what_it_does": "flags vegetation-loss polygons whose NDVI also fell in the same windows of earlier years (likely harvest or a seasonal cycle); polygons are never removed"
+ },
+ "warnings": [],
+ "next_step": "Call detect_change with the same arguments.",
+ "attribution": "Scene search: Element 84 Earth Search (Sentinel-2 L2A COGs on AWS Open Data)"
+}

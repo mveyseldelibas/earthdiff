@@ -1,0 +1,68 @@
+{
+ "status": "ready",
+ "today": "2026-11-06",
+ "area": {
+  "bbox_west_south_east_north": [
+   -114.59462,
+   36.14121,
+   -114.34368,
+   36.28492
+  ],
+  "center_lon_lat": [
+   -114.46915,
+   36.21307
+  ],
+  "area_km2": 360.0
+ },
+ "before_window": {
+  "label": "2019-07",
+  "start": "2019-07-01",
+  "end": "2019-07-31",
+  "defaulted_to_same_period_last_year": false
+ },
+ "after_window": {
+  "label": "2022-07",
+  "start": "2022-07-01",
+  "end": "2022-07-31"
+ },
+ "season_gap_days": 0,
+ "resolution_m": 20.0,
+ "grid_pixels": 952200,
+ "candidate_scenes": {
+  "before": 6,
+  "after": 6,
+  "before_dates": [
+   "2019-07-05",
+   "2019-07-10",
+   "2019-07-15",
+   "2019-07-20",
+   "2019-07-25",
+   "2019-07-30"
+  ],
+  "after_dates": [
+   "2022-07-04",
+   "2022-07-09",
+   "2022-07-14",
+   "2022-07-19",
+   "2022-07-24",
+   "2022-07-29"
+  ]
+ },
+ "expected_runtime": "usually 1 to 3 minutes",
+ "seasonal_check": {
+  "enabled": false,
+  "earlier_years_checked": 2,
+  "extra_windows": [
+   "2018-07",
+   "2021-07",
+   "2017-07",
+   "2020-07"
+  ],
+  "extra_composites_at_most": 4,
+  "extra_time": "typically adds 20 to 80 seconds (small area, red and NIR only, up to 3 scenes per window); it is off by default",
+  "what_it_does": "flags vegetation-loss polygons whose NDVI also fell in the same windows of earlier years (likely harvest or a seasonal cycle); polygons are never removed"
+ },
+ "warnings": [],
+ "next_step": "Call detect_change with the same arguments.",
+ "attribution": "Scene search: Element 84 Earth Search (Sentinel-2 L2A COGs on AWS Open Data)"
+}

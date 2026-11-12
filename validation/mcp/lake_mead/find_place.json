@@ -1,0 +1,155 @@
+{
+ "status": "ambiguous",
+ "query": "Lake Mead",
+ "candidates": [
+  {
+   "rank": 1,
+   "name": "Lake Mead",
+   "display_name": "Lake Mead, Clark County, Nevada, United States",
+   "osm_kind": "water/reservoir",
+   "osm": "relation/1275469",
+   "center_lon_lat": [
+    -114.41328,
+    36.21306
+   ],
+   "bbox_west_south_east_north": [
+    -114.83948,
+    36.00097,
+    -114.09881,
+    36.42515
+   ],
+   "area_km2": 3136.28,
+   "fits_analysis_limit": false,
+   "narrowing_options": {
+    "why": "The bounding box is 3,136 km2 and the analysis limit is 400 km2. Ask the user which part matters, or offer one of these.",
+    "centered_bbox": {
+     "bbox_west_south_east_north": [
+      -114.59462,
+      36.14121,
+      -114.34368,
+      36.28492
+     ],
+     "area_km2": 360.0
+    },
+    "tiles": [
+     {
+      "label": "north-west",
+      "bbox_west_south_east_north": [
+       -114.83948,
+       36.28376,
+       -114.59259,
+       36.42515
+      ],
+      "area_km2": 347.8
+     },
+     {
+      "label": "north-middle",
+      "bbox_west_south_east_north": [
+       -114.59259,
+       36.28376,
+       -114.3457,
+       36.42515
+      ],
+      "area_km2": 347.9
+     },
+     {
+      "label": "north-east",
+      "bbox_west_south_east_north": [
+       -114.3457,
+       36.28376,
+       -114.09881,
+       36.42515
+      ],
+      "area_km2": 347.9
+     },
+     {
+      "label": "middle-west",
+      "bbox_west_south_east_north": [
+       -114.83948,
+       36.14237,
+       -114.59259,
+       36.28376
+      ],
+      "area_km2": 348.4
+     },
+     {
+      "label": "centre",
+      "bbox_west_south_east_north": [
+       -114.59259,
+       36.14237,
+       -114.3457,
+       36.28376
+      ],
+      "area_km2": 348.5
+     },
+     {
+      "label": "middle-east",
+      "bbox_west_south_east_north": [
+       -114.3457,
+       36.14237,
+       -114.09881,
+       36.28376
+      ],
+      "area_km2": 348.6
+     },
+     {
+      "label": "south-west",
+      "bbox_west_south_east_north": [
+       -114.83948,
+       36.00097,
+       -114.59259,
+       36.14237
+      ],
+      "area_km2": 349.0
+     },
+     {
+      "label": "south-middle",
+      "bbox_west_south_east_north": [
+       -114.59259,
+       36.00097,
+       -114.3457,
+       36.14237
+      ],
+      "area_km2": 349.1
+     },
+     {
+      "label": "south-east",
+      "bbox_west_south_east_north": [
+       -114.3457,
+       36.00097,
+       -114.09881,
+       36.14237
+      ],
+      "area_km2": 349.2
+     }
+    ],
+    "tiles_note": null
+   }
+  },
+  {
+   "rank": 2,
+   "name": "Lake Mead",
+   "display_name": "Lake Mead, North Greenwich, Greenwich, Western Connecticut Planning Region, Connecticut, United States",
+   "osm_kind": "natural/water",
+   "osm": "way/43386989",
+   "center_lon_lat": [
+    -73.6877,
+    41.10305
+   ],
+   "bbox_west_south_east_north": [
+    -73.68968,
+    41.10165,
+    -73.68693,
+    41.10458
+   ],
+   "area_km2": 0.08,
+   "fits_analysis_limit": true,
+   "note": "This is a point-like feature with a tiny bounding box; pass margin_km (for example 2 to 5) or give a larger bbox."
+  }
+ ],
+ "analysis_limit_km2": 400.0,
+ "margin_km": 0.0,
+ "next_step": "Several different places match. Do not guess: show the candidates and ask which one the user means (unless the user already made it clear, for example 'the lake'; then say which candidate you used).",
+ "from_cache": true,
+ "attribution": "Place search: (c) OpenStreetMap contributors (ODbL), via Nominatim"
+}

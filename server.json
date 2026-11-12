@@ -1,0 +1,42 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.mveyseldelibas/earthdiff",
+  "title": "earthdiff",
+  "description": "Satellite eyes for AI assistants: what changed here? Free Sentinel-2 imagery, no account or API key.",
+  "repository": {
+    "url": "https://github.com/mveyseldelibas/earthdiff",
+    "source": "github"
+  },
+  "version": "0.2.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "earthdiff",
+      "version": "0.2.0",
+      "runtimeHint": "uvx",
+      "runtimeArguments": [
+        { "type": "named", "name": "--from", "value": "earthdiff[mcp]" }
+      ],
+      "packageArguments": [
+        { "type": "positional", "value": "mcp" }
+      ],
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "EARTHDIFF_OUTPUT_DIR",
+          "description": "Folder where reports and images are written (default ~/earthdiff-mcp-output).",
+          "isRequired": false,
+          "isSecret": false
+        },
+        {
+          "name": "EARTHDIFF_MAX_AREA_KM2",
+          "description": "Largest area one analysis may cover, in km2 (default and maximum 2000; set it lower to limit run time).",
+          "isRequired": false,
+          "isSecret": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+   0.0s   2.00  area prepared
+   0.0s   4.00  searching Sentinel-2 scenes
+   8.0s   4.01  searching Sentinel-2 scenes (8 s)
+   8.7s   7.00  found 13 candidate scenes (before) and 30 (after)
+   8.7s   8.00  before: checking cloud cover of candidate scenes
+  13.5s  14.00  before: downloading band 1 of 6 (blue)
+  16.0s  14.01  before: downloading band 1 of 6 (blue) (16 s)
+  21.9s  19.40  before: downloading band 2 of 6 (green)
+  24.0s  19.41  before: downloading band 2 of 6 (green) (24 s)
+  32.0s  19.42  before: downloading band 2 of 6 (green) (32 s)
+  33.7s  24.80  before: downloading band 3 of 6 (red)
+  40.1s  24.81  before: downloading band 3 of 6 (red) (40 s)
+  43.1s  30.20  before: downloading band 4 of 6 (nir)
+  48.1s  30.21  before: downloading band 4 of 6 (nir) (48 s)
+  53.6s  35.60  before: downloading band 5 of 6 (swir16)
+  56.1s  35.61  before: downloading band 5 of 6 (swir16) (56 s)
+  58.8s  41.00  before: downloading band 6 of 6 (swir22)
+  64.1s  41.01  before: downloading band 6 of 6 (swir22) (64 s)
+  64.1s  47.00  after: checking cloud cover of candidate scenes
+  71.3s  53.00  after: downloading band 1 of 6 (blue)
+  72.1s  53.01  after: downloading band 1 of 6 (blue) (72 s)
+  80.1s  53.02  after: downloading band 1 of 6 (blue) (80 s)
+  80.9s  58.40  after: downloading band 2 of 6 (green)
+  88.1s  58.41  after: downloading band 2 of 6 (green) (88 s)
+  90.7s  63.80  after: downloading band 3 of 6 (red)
+  96.1s  63.81  after: downloading band 3 of 6 (red) (96 s)
+ 102.5s  69.20  after: downloading band 4 of 6 (nir)
+ 104.2s  69.21  after: downloading band 4 of 6 (nir) (104 s)
+ 111.6s  74.60  after: downloading band 5 of 6 (swir16)
+ 112.2s  74.61  after: downloading band 5 of 6 (swir16) (112 s)
+ 117.0s  80.00  after: downloading band 6 of 6 (swir22)
+ 120.2s  80.01  after: downloading band 6 of 6 (swir22) (120 s)
+ 122.3s  88.00  detecting changes
+ 123.0s  94.00  rendering report and maps
+ 128.2s  94.01  rendering report and maps (128 s)
+ 130.2s  99.00  finished
+ 130.7s 100.00  done

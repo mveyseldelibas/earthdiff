@@ -1,0 +1,11 @@
+{
+ "find_place_s": 0.3,
+ "plan_change_s": 5.2,
+ "detect_change_s": 172.6,
+ "image_bytes": {
+  "before": 131550,
+  "after": 126944,
+  "change_map": 111072
+ },
+ "progress_events": 42
+}

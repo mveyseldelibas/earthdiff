@@ -1,0 +1,474 @@
+{
+ "name": "Istanbul Airport 2017 vs 2019",
+ "earthdiff_version": "0.2.0",
+ "before_window": {
+  "label": "2017-06 .. 2017-09",
+  "defaulted_to_same_period_last_year": false
+ },
+ "after_window": {
+  "label": "2019-06 .. 2019-08"
+ },
+ "area_km2": 320.93,
+ "resolution_m": 20.0,
+ "comparable_fraction": 0.979,
+ "scenes": {
+  "before": 8,
+  "after": 8,
+  "detail": [
+   {
+    "period": "before (2017-06 .. 2017-09)",
+    "date": "2017-06-12",
+    "scene_cloud_cover": 16.3,
+    "cloud_free_share_of_area": 0.5411
+   },
+   {
+    "period": "before (2017-06 .. 2017-09)",
+    "date": "2017-07-24",
+    "scene_cloud_cover": 0.8,
+    "cloud_free_share_of_area": 0.858
+   },
+   {
+    "period": "before (2017-06 .. 2017-09)",
+    "date": "2017-07-27",
+    "scene_cloud_cover": 17.9,
+    "cloud_free_share_of_area": 0.8506
+   },
+   {
+    "period": "before (2017-06 .. 2017-09)",
+    "date": "2017-08-06",
+    "scene_cloud_cover": 14.0,
+    "cloud_free_share_of_area": 0.7781
+   },
+   {
+    "period": "before (2017-06 .. 2017-09)",
+    "date": "2017-08-13",
+    "scene_cloud_cover": 7.6,
+    "cloud_free_share_of_area": 0.5796
+   },
+   {
+    "period": "before (2017-06 .. 2017-09)",
+    "date": "2017-08-23",
+    "scene_cloud_cover": 30.6,
+    "cloud_free_share_of_area": 0.4217
+   },
+   {
+    "period": "before (2017-06 .. 2017-09)",
+    "date": "2017-09-05",
+    "scene_cloud_cover": 10.6,
+    "cloud_free_share_of_area": 0.8231
+   },
+   {
+    "period": "before (2017-06 .. 2017-09)",
+    "date": "2017-09-12",
+    "scene_cloud_cover": 0.8,
+    "cloud_free_share_of_area": 0.854
+   },
+   {
+    "period": "after (2019-06 .. 2019-08)",
+    "date": "2019-06-07",
+    "scene_cloud_cover": 0.8,
+    "cloud_free_share_of_area": 0.9998
+   },
+   {
+    "period": "after (2019-06 .. 2019-08)",
+    "date": "2019-06-24",
+    "scene_cloud_cover": 0.0,
+    "cloud_free_share_of_area": 0.9993
+   },
+   {
+    "period": "after (2019-06 .. 2019-08)",
+    "date": "2019-07-07",
+    "scene_cloud_cover": 0.2,
+    "cloud_free_share_of_area": 0.9983
+   },
+   {
+    "period": "after (2019-06 .. 2019-08)",
+    "date": "2019-08-01",
+    "scene_cloud_cover": 0.1,
+    "cloud_free_share_of_area": 0.995
+   },
+   {
+    "period": "after (2019-06 .. 2019-08)",
+    "date": "2019-08-03",
+    "scene_cloud_cover": 0.0,
+    "cloud_free_share_of_area": 0.9988
+   },
+   {
+    "period": "after (2019-06 .. 2019-08)",
+    "date": "2019-08-06",
+    "scene_cloud_cover": 1.6,
+    "cloud_free_share_of_area": 0.9825
+   },
+   {
+    "period": "after (2019-06 .. 2019-08)",
+    "date": "2019-08-13",
+    "scene_cloud_cover": 0.0,
+    "cloud_free_share_of_area": 0.9972
+   },
+   {
+    "period": "after (2019-06 .. 2019-08)",
+    "date": "2019-08-26",
+    "scene_cloud_cover": 4.4,
+    "cloud_free_share_of_area": 0.9952
+   }
+  ]
+ },
+ "changes": [
+  {
+   "class": "vegetation_loss",
+   "label": "Vegetation loss",
+   "area_ha": 558.16,
+   "polygons": 169
+  },
+  {
+   "class": "vegetation_gain",
+   "label": "Vegetation gain",
+   "area_ha": 199.32,
+   "polygons": 97
+  },
+  {
+   "class": "new_water",
+   "label": "New water",
+   "area_ha": 50.32,
+   "polygons": 20
+  },
+  {
+   "class": "water_loss",
+   "label": "Water loss",
+   "area_ha": 133.0,
+   "polygons": 18
+  },
+  {
+   "class": "new_bare_or_built",
+   "label": "New bare soil / built-up",
+   "area_ha": 6.0,
+   "polygons": 5
+  }
+ ],
+ "total_changed_ha": 946.8,
+ "changed_fraction_of_area": 0.0295,
+ "confidence": {
+  "area_weighted_mean": 0.77,
+  "level": "high",
+  "share_of_changed_area": {
+   "high": 0.651,
+   "medium": 0.338,
+   "low": 0.01
+  },
+  "note": "Heuristic score from 0 to 1 (magnitude of the index change, number of valid observations, size). It is not a probability of being correct."
+ },
+ "vegetation_loss_likely_cause": {
+  "applies_to": "vegetation_loss polygons",
+  "totals": {
+   "fire-like": {
+    "polygons": 5,
+    "area_ha": 8.56
+   },
+   "clearing-like": {
+    "polygons": 32,
+    "area_ha": 52.16
+   },
+   "unclear": {
+    "polygons": 132,
+    "area_ha": 497.44
+   }
+  },
+  "note": "A hint from dNBR, brightness and shape, not a verdict on the cause. 'fire-like' does not prove a fire; 'clearing-like' covers felling, harvest, ploughing and construction.",
+  "thresholds": {
+   "dnbr_unburned_below": 0.1,
+   "dnbr_moderate_low": 0.27,
+   "dnbr_moderate_high": 0.44,
+   "dark_visible_reflectance_after_at_most": 0.09,
+   "bright_visible_reflectance_after_at_least": 0.2,
+   "straight_edged_rectangularity_at_least": 0.8,
+   "irregular_rectangularity_at_most": 0.6
+  },
+  "sources": [
+   "Key & Benson (2006) FIREMON Landscape Assessment: dNBR severity thresholds 0.10 / 0.27 / 0.44 / 0.66",
+   "Copernicus EFFIS fire severity (same thresholds applied to Sentinel-2): https://forest-fire.emergency.copernicus.eu/about-effis/technical-background/fire-severity",
+   "UN-SPIDER recommended practice: burn severity mapping with NBR / dNBR"
+  ],
+  "own_thresholds": "brightness and rectangularity thresholds are this project's heuristics, checked on only two public cases"
+ },
+ "seasonal_check": null,
+ "bright_surface": {
+  "fraction_of_comparable_area": 0.0511,
+  "fraction_in_both_periods": 0.009,
+  "warn_threshold": 0.2,
+  "reliable": true,
+  "rule": "mean(blue, green, red) >= 0.25 and NDVI < 0.15 in the before or after composite (salt, sand, snow, bare limestone, concrete)"
+ },
+ "data_quality": {
+  "level": "good",
+  "reasons": [],
+  "note": "Grades the data behind the comparison, not the correctness of the polygons; even 'good' is unverified by field data."
+ },
+ "largest_areas": [
+  {
+   "id": 1,
+   "class": "water_loss",
+   "area_ha": 47.32,
+   "confidence": 0.97,
+   "confidence_level": "high",
+   "centroid_lon_lat": [
+    28.767705,
+    41.323721
+   ],
+   "ndvi_before_after": [
+    -0.176,
+    0.106
+   ],
+   "mndwi_before_after": [
+    0.562,
+    -0.209
+   ],
+   "bsi_before_after": [
+    -0.259,
+    0.102
+   ],
+   "valid_obs_before_after": [
+    5.8,
+    7.4
+   ],
+   "bright_share": 0.053
+  },
+  {
+   "id": 2,
+   "class": "vegetation_loss",
+   "area_ha": 37.92,
+   "confidence": 0.64,
+   "confidence_level": "medium",
+   "centroid_lon_lat": [
+    28.667843,
+    41.249717
+   ],
+   "ndvi_before_after": [
+    0.64,
+    0.058
+   ],
+   "mndwi_before_after": [
+    -0.429,
+    -0.161
+   ],
+   "bsi_before_after": [
+    -0.145,
+    0.096
+   ],
+   "valid_obs_before_after": [
+    4.4,
+    8.0
+   ],
+   "likely_cause": "unclear",
+   "likely_cause_basis": "dNBR 0.43 (at least moderate-low burn severity); bright after (visible reflectance 0.28), like exposed soil or stubble",
+   "dnbr": 0.429,
+   "bright_share": 0.728
+  },
+  {
+   "id": 3,
+   "class": "water_loss",
+   "area_ha": 27.08,
+   "confidence": 0.98,
+   "confidence_level": "high",
+   "centroid_lon_lat": [
+    28.806938,
+    41.29932
+   ],
+   "ndvi_before_after": [
+    -0.302,
+    0.032
+   ],
+   "mndwi_before_after": [
+    0.647,
+    -0.193
+   ],
+   "bsi_before_after": [
+    -0.227,
+    0.128
+   ],
+   "valid_obs_before_after": [
+    5.9,
+    7.3
+   ],
+   "bright_share": 0.043
+  },
+  {
+   "id": 4,
+   "class": "vegetation_loss",
+   "area_ha": 24.44,
+   "confidence": 0.98,
+   "confidence_level": "high",
+   "centroid_lon_lat": [
+    28.770449,
+    41.261748
+   ],
+   "ndvi_before_after": [
+    0.604,
+    0.073
+   ],
+   "mndwi_before_after": [
+    -0.405,
+    -0.289
+   ],
+   "bsi_before_after": [
+    -0.129,
+    0.172
+   ],
+   "valid_obs_before_after": [
+    5.8,
+    8.0
+   ],
+   "likely_cause": "unclear",
+   "likely_cause_basis": "dNBR 0.54 (at least moderate-high burn severity by Key & Benson thresholds); irregular outline (rectangularity 0.54)",
+   "dnbr": 0.537,
+   "bright_share": 0.036
+  },
+  {
+   "id": 5,
+   "class": "water_loss",
+   "area_ha": 23.44,
+   "confidence": 0.63,
+   "confidence_level": "medium",
+   "centroid_lon_lat": [
+    28.786538,
+    41.230124
+   ],
+   "ndvi_before_after": [
+    -0.204,
+    0.042
+   ],
+   "mndwi_before_after": [
+    0.499,
+    -0.173
+   ],
+   "bsi_before_after": [
+    -0.159,
+    0.115
+   ],
+   "valid_obs_before_after": [
+    4.7,
+    7.4
+   ],
+   "bright_share": 0.747
+  },
+  {
+   "id": 6,
+   "class": "vegetation_loss",
+   "area_ha": 22.44,
+   "confidence": 0.86,
+   "confidence_level": "high",
+   "centroid_lon_lat": [
+    28.7024,
+    41.256825
+   ],
+   "ndvi_before_after": [
+    0.729,
+    0.102
+   ],
+   "mndwi_before_after": [
+    -0.456,
+    -0.191
+   ],
+   "bsi_before_after": [
+    -0.224,
+    0.088
+   ],
+   "valid_obs_before_after": [
+    5.9,
+    8.0
+   ],
+   "likely_cause": "unclear",
+   "likely_cause_basis": "dNBR 0.51 (at least moderate-high burn severity by Key & Benson thresholds); bright after (visible reflectance 0.23), like exposed soil or stubble",
+   "dnbr": 0.506,
+   "bright_share": 0.282
+  },
+  {
+   "id": 7,
+   "class": "vegetation_loss",
+   "area_ha": 21.84,
+   "confidence": 0.98,
+   "confidence_level": "high",
+   "centroid_lon_lat": [
+    28.763693,
+    41.263512
+   ],
+   "ndvi_before_after": [
+    0.643,
+    0.043
+   ],
+   "mndwi_before_after": [
+    -0.445,
+    -0.225
+   ],
+   "bsi_before_after": [
+    -0.147,
+    0.154
+   ],
+   "valid_obs_before_after": [
+    7.0,
+    8.0
+   ],
+   "likely_cause": "unclear",
+   "likely_cause_basis": "dNBR 0.57 (at least moderate-high burn severity by Key & Benson thresholds); bright after (visible reflectance 0.20), like exposed soil or stubble",
+   "dnbr": 0.571,
+   "bright_share": 0.042
+  },
+  {
+   "id": 8,
+   "class": "vegetation_loss",
+   "area_ha": 21.4,
+   "confidence": 0.75,
+   "confidence_level": "high",
+   "centroid_lon_lat": [
+    28.711046,
+    41.222242
+   ],
+   "ndvi_before_after": [
+    0.704,
+    0.327
+   ],
+   "mndwi_before_after": [
+    -0.422,
+    -0.449
+   ],
+   "bsi_before_after": [
+    -0.224,
+    0.11
+   ],
+   "valid_obs_before_after": [
+    6.3,
+    8.0
+   ],
+   "likely_cause": "unclear",
+   "likely_cause_basis": "dNBR 0.46 (at least moderate-high burn severity by Key & Benson thresholds)",
+   "dnbr": 0.462,
+   "bright_share": 0.0
+  }
+ ],
+ "warnings": [
+  "A window of 122 days spans several seasons. The composite uses the clearest scenes, which can come from different times of the year in the two periods; prefer one to three months of the same season."
+ ],
+ "files": {
+  "output_dir": "validation/mcp_runs/20261106-044600_Istanbul_Airport_2017_vs_2019",
+  "report_html": "validation/mcp_runs/20261106-044600_Istanbul_Airport_2017_vs_2019/report.html",
+  "changes_geojson": "validation/mcp_runs/20261106-044600_Istanbul_Airport_2017_vs_2019/changes.geojson",
+  "summary_json": "validation/mcp_runs/20261106-044600_Istanbul_Airport_2017_vs_2019/summary.json",
+  "before_png": "validation/mcp_runs/20261106-044600_Istanbul_Airport_2017_vs_2019/before.png",
+  "after_png": "validation/mcp_runs/20261106-044600_Istanbul_Airport_2017_vs_2019/after.png",
+  "change_map_png": "validation/mcp_runs/20261106-044600_Istanbul_Airport_2017_vs_2019/change_map.png",
+  "overview_png": "validation/mcp_runs/20261106-044600_Istanbul_Airport_2017_vs_2019/overview.png",
+  "change_class_tif": "validation/mcp_runs/20261106-044600_Istanbul_Airport_2017_vs_2019/change_class.tif"
+ },
+ "attribution": "Contains modified Copernicus Sentinel data 2017, 2019",
+ "backend": "Element 84 Earth Search (Sentinel-2 L2A COGs on AWS Open Data)",
+ "elapsed_seconds": 130.2,
+ "present_to_user": [
+  "The three images (before, after, detected changes) are returned with this result; refer to them.",
+  "Give hectares and polygon counts per class, the comparable share of the area, the confidence and the data quality, and EVERY warning above.",
+  "Say what the classes mean (a spectral change). likely_cause is only a hint from dNBR, brightness and shape: say 'fire-like' or 'clearing-like', never 'it was a fire'; drought, harvest and construction can look alike.",
+  "If seasonal_check is present, report the hectares flagged likely_seasonal (they repeat in earlier years, so probably harvest or a seasonal cycle); those polygons are kept.",
+  "If bright_surface.reliable is false, say that change on salt, sand or snow is not reliable and that no change there must not be read as no change; the confidence was lowered.",
+  "earthdiff is a screening tool: it flags where free Sentinel-2 imagery changed. It is not an official damage, burned-area, flood or deforestation assessment.",
+  "Credit the data: Contains modified Copernicus Sentinel data 2017, 2019.",
+  "Tell the user where report.html (interactive swipe map) and changes.geojson were saved."
+ ]
+}

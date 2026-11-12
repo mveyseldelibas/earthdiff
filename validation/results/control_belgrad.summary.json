@@ -1,0 +1,189 @@
+{
+  "name": "Control: Belgrad Forest (Istanbul), Jul 2022 vs Jul 2023 - expected: almost no change",
+  "version": "0.1.0",
+  "generated": "2026-11-02 17:32 UTC",
+  "before_label": "2022-07",
+  "after_label": "2023-07",
+  "aoi_km2": 167.68,
+  "resolution_m": 10.0,
+  "valid_fraction": 1.0,
+  "scenes_before": 8,
+  "scenes_after": 8,
+  "mmu_ha": 0.5,
+  "sensitivity": "default",
+  "backend": "earth-search",
+  "backend_attribution": "Element 84 Earth Search (Sentinel-2 L2A COGs on AWS Open Data)",
+  "before_period": [
+    "2022-07-01",
+    "2022-07-31"
+  ],
+  "after_period": [
+    "2023-07-01",
+    "2023-07-31"
+  ],
+  "totals": {
+    "vegetation_loss": {
+      "label": "Vegetation loss",
+      "polygons": 26,
+      "area_ha": 40.33
+    },
+    "vegetation_gain": {
+      "label": "Vegetation gain",
+      "polygons": 3,
+      "area_ha": 3.38
+    },
+    "new_water": {
+      "label": "New water",
+      "polygons": 0,
+      "area_ha": 0
+    },
+    "water_loss": {
+      "label": "Water loss",
+      "polygons": 1,
+      "area_ha": 2.02
+    },
+    "new_bare_or_built": {
+      "label": "New bare soil / built-up",
+      "polygons": 0,
+      "area_ha": 0
+    }
+  },
+  "changed_fraction_of_aoi": 0.0027,
+  "warnings": [],
+  "scenes": [
+    {
+      "period": "before (2022-07)",
+      "id": "S2B_35TPF_20220701_0_L2A",
+      "date": "2022-07-01",
+      "cloud_cover": 5.252076,
+      "valid_fraction": 0.9568
+    },
+    {
+      "period": "before (2022-07)",
+      "id": "S2A_35TPF_20220703_0_L2A",
+      "date": "2022-07-03",
+      "cloud_cover": 2.809864,
+      "valid_fraction": 0.997
+    },
+    {
+      "period": "before (2022-07)",
+      "id": "S2A_35TPF_20220706_0_L2A",
+      "date": "2022-07-06",
+      "cloud_cover": 5.335992,
+      "valid_fraction": 0.8941
+    },
+    {
+      "period": "before (2022-07)",
+      "id": "S2A_35TPF_20220716_0_L2A",
+      "date": "2022-07-16",
+      "cloud_cover": 3.041443,
+      "valid_fraction": 0.9367
+    },
+    {
+      "period": "before (2022-07)",
+      "id": "S2B_35TPF_20220721_0_L2A",
+      "date": "2022-07-21",
+      "cloud_cover": 0.002403,
+      "valid_fraction": 0.9999
+    },
+    {
+      "period": "before (2022-07)",
+      "id": "S2A_35TPF_20220723_0_L2A",
+      "date": "2022-07-23",
+      "cloud_cover": 0.008941,
+      "valid_fraction": 0.9991
+    },
+    {
+      "period": "before (2022-07)",
+      "id": "S2A_35TPF_20220726_0_L2A",
+      "date": "2022-07-26",
+      "cloud_cover": 1.458208,
+      "valid_fraction": 0.9973
+    },
+    {
+      "period": "before (2022-07)",
+      "id": "S2B_35TPF_20220728_0_L2A",
+      "date": "2022-07-28",
+      "cloud_cover": 3.243269,
+      "valid_fraction": 0.9488
+    },
+    {
+      "period": "after (2023-07)",
+      "id": "S2A_35TPF_20230701_0_L2A",
+      "date": "2023-07-01",
+      "cloud_cover": 0.334444,
+      "valid_fraction": 0.9988
+    },
+    {
+      "period": "after (2023-07)",
+      "id": "S2A_35TPF_20230711_0_L2A",
+      "date": "2023-07-11",
+      "cloud_cover": 3.725468,
+      "valid_fraction": 0.9361
+    },
+    {
+      "period": "after (2023-07)",
+      "id": "S2B_35TPF_20230713_0_L2A",
+      "date": "2023-07-13",
+      "cloud_cover": 0.008829,
+      "valid_fraction": 0.9978
+    },
+    {
+      "period": "after (2023-07)",
+      "id": "S2B_35TPF_20230716_0_L2A",
+      "date": "2023-07-16",
+      "cloud_cover": 3.120597,
+      "valid_fraction": 0.9242
+    },
+    {
+      "period": "after (2023-07)",
+      "id": "S2A_35TPF_20230721_0_L2A",
+      "date": "2023-07-21",
+      "cloud_cover": 6.971063,
+      "valid_fraction": 0.7468
+    },
+    {
+      "period": "after (2023-07)",
+      "id": "S2B_35TPF_20230723_0_L2A",
+      "date": "2023-07-23",
+      "cloud_cover": 0.013585,
+      "valid_fraction": 0.9983
+    },
+    {
+      "period": "after (2023-07)",
+      "id": "S2B_35TPF_20230726_0_L2A",
+      "date": "2023-07-26",
+      "cloud_cover": 0.006307,
+      "valid_fraction": 0.9995
+    },
+    {
+      "period": "after (2023-07)",
+      "id": "S2A_35TPF_20230728_0_L2A",
+      "date": "2023-07-28",
+      "cloud_cover": 10.393724,
+      "valid_fraction": 0.7617
+    }
+  ],
+  "thresholds": {
+    "veg_min_before": 0.4,
+    "veg_drop": 0.25,
+    "veg_min_after": 0.4,
+    "veg_rise": 0.25,
+    "water_mndwi": 0.1,
+    "land_mndwi": -0.05,
+    "water_ndvi_max": 0.3,
+    "water_delta": 0.25,
+    "bare_rise": 0.15,
+    "bare_ndvi_max": 0.25
+  },
+  "attribution": "Contains modified Copernicus Sentinel data 2022, 2023",
+  "files": {
+    "geojson": "changes.geojson",
+    "class_tif": "change_class.tif",
+    "before": "before.png",
+    "after": "after.png",
+    "change_map": "change_map.png",
+    "overview": "overview.png",
+    "report": "report.html"
+  }
+}

@@ -1,0 +1,433 @@
+{
+ "name": "Lake Mead 2019 vs 2022",
+ "earthdiff_version": "0.2.0",
+ "before_window": {
+  "label": "2019-07",
+  "defaulted_to_same_period_last_year": false
+ },
+ "after_window": {
+  "label": "2022-07"
+ },
+ "area_km2": 360.0,
+ "resolution_m": 20.0,
+ "comparable_fraction": 0.9997,
+ "scenes": {
+  "before": 6,
+  "after": 6,
+  "detail": [
+   {
+    "period": "before (2019-07)",
+    "date": "2019-07-05",
+    "scene_cloud_cover": 47.7,
+    "cloud_free_share_of_area": 0.81
+   },
+   {
+    "period": "before (2019-07)",
+    "date": "2019-07-10",
+    "scene_cloud_cover": 0.0,
+    "cloud_free_share_of_area": 0.9991
+   },
+   {
+    "period": "before (2019-07)",
+    "date": "2019-07-15",
+    "scene_cloud_cover": 0.5,
+    "cloud_free_share_of_area": 0.9968
+   },
+   {
+    "period": "before (2019-07)",
+    "date": "2019-07-20",
+    "scene_cloud_cover": 0.0,
+    "cloud_free_share_of_area": 0.9986
+   },
+   {
+    "period": "before (2019-07)",
+    "date": "2019-07-25",
+    "scene_cloud_cover": 38.4,
+    "cloud_free_share_of_area": 0.4478
+   },
+   {
+    "period": "before (2019-07)",
+    "date": "2019-07-30",
+    "scene_cloud_cover": 26.0,
+    "cloud_free_share_of_area": 0.6041
+   },
+   {
+    "period": "after (2022-07)",
+    "date": "2022-07-04",
+    "scene_cloud_cover": 0.2,
+    "cloud_free_share_of_area": 0.9849
+   },
+   {
+    "period": "after (2022-07)",
+    "date": "2022-07-09",
+    "scene_cloud_cover": 4.2,
+    "cloud_free_share_of_area": 0.7601
+   },
+   {
+    "period": "after (2022-07)",
+    "date": "2022-07-14",
+    "scene_cloud_cover": 64.1,
+    "cloud_free_share_of_area": 0.0566
+   },
+   {
+    "period": "after (2022-07)",
+    "date": "2022-07-19",
+    "scene_cloud_cover": 1.4,
+    "cloud_free_share_of_area": 0.9983
+   },
+   {
+    "period": "after (2022-07)",
+    "date": "2022-07-24",
+    "scene_cloud_cover": 42.3,
+    "cloud_free_share_of_area": 0.7504
+   },
+   {
+    "period": "after (2022-07)",
+    "date": "2022-07-29",
+    "scene_cloud_cover": 65.0,
+    "cloud_free_share_of_area": 0.1344
+   }
+  ]
+ },
+ "changes": [
+  {
+   "class": "vegetation_loss",
+   "label": "Vegetation loss",
+   "area_ha": 0,
+   "polygons": 0
+  },
+  {
+   "class": "vegetation_gain",
+   "label": "Vegetation gain",
+   "area_ha": 0,
+   "polygons": 0
+  },
+  {
+   "class": "new_water",
+   "label": "New water",
+   "area_ha": 0,
+   "polygons": 0
+  },
+  {
+   "class": "water_loss",
+   "label": "Water loss",
+   "area_ha": 616.12,
+   "polygons": 64
+  },
+  {
+   "class": "new_bare_or_built",
+   "label": "New bare soil / built-up",
+   "area_ha": 0,
+   "polygons": 0
+  }
+ ],
+ "total_changed_ha": 616.12,
+ "changed_fraction_of_area": 0.0171,
+ "confidence": {
+  "area_weighted_mean": 0.7,
+  "level": "medium",
+  "share_of_changed_area": {
+   "high": 0.457,
+   "medium": 0.536,
+   "low": 0.007
+  },
+  "note": "Heuristic score from 0 to 1 (magnitude of the index change, number of valid observations, size). It is not a probability of being correct."
+ },
+ "vegetation_loss_likely_cause": {
+  "applies_to": "vegetation_loss polygons",
+  "totals": {
+   "fire-like": {
+    "polygons": 0,
+    "area_ha": 0.0
+   },
+   "clearing-like": {
+    "polygons": 0,
+    "area_ha": 0.0
+   },
+   "unclear": {
+    "polygons": 0,
+    "area_ha": 0.0
+   }
+  },
+  "note": "A hint from dNBR, brightness and shape, not a verdict on the cause. 'fire-like' does not prove a fire; 'clearing-like' covers felling, harvest, ploughing and construction.",
+  "thresholds": {
+   "dnbr_unburned_below": 0.1,
+   "dnbr_moderate_low": 0.27,
+   "dnbr_moderate_high": 0.44,
+   "dark_visible_reflectance_after_at_most": 0.09,
+   "bright_visible_reflectance_after_at_least": 0.2,
+   "straight_edged_rectangularity_at_least": 0.8,
+   "irregular_rectangularity_at_most": 0.6
+  },
+  "sources": [
+   "Key & Benson (2006) FIREMON Landscape Assessment: dNBR severity thresholds 0.10 / 0.27 / 0.44 / 0.66",
+   "Copernicus EFFIS fire severity (same thresholds applied to Sentinel-2): https://forest-fire.emergency.copernicus.eu/about-effis/technical-background/fire-severity",
+   "UN-SPIDER recommended practice: burn severity mapping with NBR / dNBR"
+  ],
+  "own_thresholds": "brightness and rectangularity thresholds are this project's heuristics, checked on only two public cases"
+ },
+ "seasonal_check": null,
+ "bright_surface": {
+  "fraction_of_comparable_area": 0.0618,
+  "fraction_in_both_periods": 0.0321,
+  "warn_threshold": 0.2,
+  "reliable": true,
+  "rule": "mean(blue, green, red) >= 0.25 and NDVI < 0.15 in the before or after composite (salt, sand, snow, bare limestone, concrete)"
+ },
+ "data_quality": {
+  "level": "good",
+  "reasons": [],
+  "note": "Grades the data behind the comparison, not the correctness of the polygons; even 'good' is unverified by field data."
+ },
+ "largest_areas": [
+  {
+   "id": 1,
+   "class": "water_loss",
+   "area_ha": 126.8,
+   "confidence": 0.56,
+   "confidence_level": "medium",
+   "centroid_lon_lat": [
+    -114.3902,
+    36.171346
+   ],
+   "ndvi_before_after": [
+    -0.314,
+    0.024
+   ],
+   "mndwi_before_after": [
+    0.553,
+    -0.197
+   ],
+   "bsi_before_after": [
+    -0.203,
+    0.13
+   ],
+   "valid_obs_before_after": [
+    5.0,
+    3.8
+   ],
+   "bright_share": 0.886
+  },
+  {
+   "id": 2,
+   "class": "water_loss",
+   "area_ha": 84.68,
+   "confidence": 0.66,
+   "confidence_level": "medium",
+   "centroid_lon_lat": [
+    -114.492612,
+    36.152881
+   ],
+   "ndvi_before_after": [
+    -0.229,
+    0.036
+   ],
+   "mndwi_before_after": [
+    0.478,
+    -0.187
+   ],
+   "bsi_before_after": [
+    -0.197,
+    0.116
+   ],
+   "valid_obs_before_after": [
+    4.8,
+    2.9
+   ],
+   "bright_share": 0.658
+  },
+  {
+   "id": 3,
+   "class": "water_loss",
+   "area_ha": 53.92,
+   "confidence": 0.75,
+   "confidence_level": "high",
+   "centroid_lon_lat": [
+    -114.399306,
+    36.220346
+   ],
+   "ndvi_before_after": [
+    -0.291,
+    0.021
+   ],
+   "mndwi_before_after": [
+    0.512,
+    -0.166
+   ],
+   "bsi_before_after": [
+    -0.233,
+    0.12
+   ],
+   "valid_obs_before_after": [
+    3.7,
+    3.8
+   ],
+   "bright_share": 0.51
+  },
+  {
+   "id": 4,
+   "class": "water_loss",
+   "area_ha": 46.72,
+   "confidence": 0.72,
+   "confidence_level": "high",
+   "centroid_lon_lat": [
+    -114.391772,
+    36.237859
+   ],
+   "ndvi_before_after": [
+    -0.18,
+    0.025
+   ],
+   "mndwi_before_after": [
+    0.465,
+    -0.168
+   ],
+   "bsi_before_after": [
+    -0.207,
+    0.116
+   ],
+   "valid_obs_before_after": [
+    4.0,
+    3.0
+   ],
+   "bright_share": 0.552
+  },
+  {
+   "id": 5,
+   "class": "water_loss",
+   "area_ha": 46.72,
+   "confidence": 0.67,
+   "confidence_level": "medium",
+   "centroid_lon_lat": [
+    -114.400297,
+    36.205525
+   ],
+   "ndvi_before_after": [
+    -0.424,
+    0.023
+   ],
+   "mndwi_before_after": [
+    0.617,
+    -0.16
+   ],
+   "bsi_before_after": [
+    -0.303,
+    0.111
+   ],
+   "valid_obs_before_after": [
+    4.0,
+    3.0
+   ],
+   "bright_share": 0.658
+  },
+  {
+   "id": 6,
+   "class": "water_loss",
+   "area_ha": 32.04,
+   "confidence": 0.8,
+   "confidence_level": "high",
+   "centroid_lon_lat": [
+    -114.437353,
+    36.180928
+   ],
+   "ndvi_before_after": [
+    -0.209,
+    0.018
+   ],
+   "mndwi_before_after": [
+    0.412,
+    -0.166
+   ],
+   "bsi_before_after": [
+    -0.151,
+    0.117
+   ],
+   "valid_obs_before_after": [
+    4.9,
+    4.0
+   ],
+   "bright_share": 0.402
+  },
+  {
+   "id": 7,
+   "class": "water_loss",
+   "area_ha": 22.32,
+   "confidence": 0.8,
+   "confidence_level": "high",
+   "centroid_lon_lat": [
+    -114.385279,
+    36.249092
+   ],
+   "ndvi_before_after": [
+    -0.264,
+    0.032
+   ],
+   "mndwi_before_after": [
+    0.507,
+    -0.176
+   ],
+   "bsi_before_after": [
+    -0.231,
+    0.117
+   ],
+   "valid_obs_before_after": [
+    4.6,
+    2.4
+   ],
+   "bright_share": 0.294
+  },
+  {
+   "id": 8,
+   "class": "water_loss",
+   "area_ha": 21.68,
+   "confidence": 0.91,
+   "confidence_level": "high",
+   "centroid_lon_lat": [
+    -114.509496,
+    36.160173
+   ],
+   "ndvi_before_after": [
+    -0.213,
+    0.038
+   ],
+   "mndwi_before_after": [
+    0.47,
+    -0.205
+   ],
+   "bsi_before_after": [
+    -0.208,
+    0.126
+   ],
+   "valid_obs_before_after": [
+    5.0,
+    3.6
+   ],
+   "bright_share": 0.181
+  }
+ ],
+ "warnings": [],
+ "files": {
+  "output_dir": "validation/mcp_runs/20261106-043843_Lake_Mead_2019_vs_2022",
+  "report_html": "validation/mcp_runs/20261106-043843_Lake_Mead_2019_vs_2022/report.html",
+  "changes_geojson": "validation/mcp_runs/20261106-043843_Lake_Mead_2019_vs_2022/changes.geojson",
+  "summary_json": "validation/mcp_runs/20261106-043843_Lake_Mead_2019_vs_2022/summary.json",
+  "before_png": "validation/mcp_runs/20261106-043843_Lake_Mead_2019_vs_2022/before.png",
+  "after_png": "validation/mcp_runs/20261106-043843_Lake_Mead_2019_vs_2022/after.png",
+  "change_map_png": "validation/mcp_runs/20261106-043843_Lake_Mead_2019_vs_2022/change_map.png",
+  "overview_png": "validation/mcp_runs/20261106-043843_Lake_Mead_2019_vs_2022/overview.png",
+  "change_class_tif": "validation/mcp_runs/20261106-043843_Lake_Mead_2019_vs_2022/change_class.tif"
+ },
+ "attribution": "Contains modified Copernicus Sentinel data 2019, 2022",
+ "backend": "Element 84 Earth Search (Sentinel-2 L2A COGs on AWS Open Data)",
+ "elapsed_seconds": 172.1,
+ "present_to_user": [
+  "The three images (before, after, detected changes) are returned with this result; refer to them.",
+  "Give hectares and polygon counts per class, the comparable share of the area, the confidence and the data quality, and EVERY warning above.",
+  "Say what the classes mean (a spectral change). likely_cause is only a hint from dNBR, brightness and shape: say 'fire-like' or 'clearing-like', never 'it was a fire'; drought, harvest and construction can look alike.",
+  "If seasonal_check is present, report the hectares flagged likely_seasonal (they repeat in earlier years, so probably harvest or a seasonal cycle); those polygons are kept.",
+  "If bright_surface.reliable is false, say that change on salt, sand or snow is not reliable and that no change there must not be read as no change; the confidence was lowered.",
+  "earthdiff is a screening tool: it flags where free Sentinel-2 imagery changed. It is not an official damage, burned-area, flood or deforestation assessment.",
+  "Credit the data: Contains modified Copernicus Sentinel data 2019, 2022.",
+  "Tell the user where report.html (interactive swipe map) and changes.geojson were saved."
+ ]
+}

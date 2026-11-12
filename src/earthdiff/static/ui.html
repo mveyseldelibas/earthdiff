@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>earthdiff - draw an area</title>
+<link rel="stylesheet" href="/vendor/leaflet.css">
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#16202a;--mute:#5b6773;--line:#dde2e8;--accent:#0b5cad;--bad:#b42318;--badbg:#fef3f2}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1318;--card:#171d24;--ink:#e6ebf0;--mute:#9aa7b4;--line:#2a333d;--accent:#6aaeff;--bad:#ff8a80;--badbg:#2a1614}}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;display:flex;flex-direction:column}
+header{padding:8px 14px;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+header b{font-size:1.1rem}header span{color:var(--mute);font-size:.88rem}
+main{flex:1;display:grid;grid-template-columns:340px 1fr;min-height:0}
+aside{padding:12px 14px;border-right:1px solid var(--line);overflow:auto;background:var(--card)}
+#map,#result{height:100%;width:100%;border:0}
+#stage{position:relative;min-height:0}
+#result{display:none;background:var(--bg)}
+label{display:block;margin:10px 0 3px;font-size:.82rem;color:var(--mute);text-transform:uppercase;letter-spacing:.04em}
+input,select,button{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:7px;padding:6px 8px;width:100%}
+button{cursor:pointer;width:auto}
+button.primary{background:var(--accent);color:#fff;border-color:var(--accent);width:100%;margin-top:14px;padding:9px}
+button:disabled{opacity:.5;cursor:default}
+.row{display:flex;gap:6px;flex-wrap:wrap}
+#info{margin-top:8px;font-size:.88rem;color:var(--mute)}
+#info.bad{color:var(--bad);background:var(--badbg);border:1px solid var(--bad);border-radius:7px;padding:7px 9px;font-weight:600}
+#log{margin-top:12px;font:12px/1.4 ui-monospace,Consolas,monospace;white-space:pre-wrap;max-height:34vh;overflow:auto;background:var(--bg);border:1px solid var(--line);border-radius:7px;padding:8px;display:none}
+#err{color:#b42318;margin-top:8px;font-size:.9rem}
+#live{position:absolute;z-index:1000;pointer-events:none;display:none;background:var(--card);color:var(--ink);border:2px solid #d55e00;border-radius:7px;padding:3px 8px;font-weight:700;font-size:.9rem;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+#live.bad{border-color:var(--bad);color:var(--bad)}
+.keys{font-size:.8rem;color:var(--mute);margin-top:4px}
+kbd{font:inherit;font-size:.75rem;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 4px;background:var(--bg)}
+.hint{font-size:.8rem;color:var(--mute);margin-top:12px}
+.lang{margin-left:auto;display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.lang button{border:0;border-radius:0;padding:3px 10px;font-weight:600;background:var(--bg)}
+.lang button[aria-pressed=true]{background:var(--accent);color:#fff}
+@media (max-width:760px){main{grid-template-columns:1fr;grid-template-rows:auto 1fr}aside{border-right:0;border-bottom:1px solid var(--line)}}
+</style>
+</head>
+<body>
+<header><b>earthdiff</b><span data-t="tagline"></span><span class="lang" role="group" aria-label="Language"><button data-l="tr">TR</button><button data-l="en">EN</button></span></header>
+<main>
+<aside>
+  <label data-t="l_area"></label>
+  <div class="row">
+    <button id="b-rect" data-t="rect"></button><button id="b-poly" data-t="poly"></button><button id="b-fin" data-t="finish" disabled></button><button id="b-clear" data-t="clear"></button>
+  </div>
+  <div id="info"></div>
+  <div class="keys" data-t="keys"></div>
+  <label data-t="l_after"></label>
+  <input type="month" id="after">
+  <label data-t="l_before"></label>
+  <select id="beforeYear"></select>
+  <div class="keys" data-t="sameMonth"></div>
+  <label data-t="l_sens"></label>
+  <select id="sens"><option value="strict" data-t="s_strict"></option><option value="default" selected data-t="s_default"></option><option value="sensitive" data-t="s_sensitive"></option></select>
+  <label data-t="l_mmu"></label>
+  <select id="mmu"><option value="0.1" data-t="mmu01"></option><option value="0.5" selected data-t="mmu05"></option><option value="2" data-t="mmu2"></option></select>
+  <label data-t="l_base"></label>
+  <select id="base"><option value="none" data-t="b_none"></option><option value="relief" data-t="b_relief"></option><option value="osm" data-t="b_osm"></option><option value="topo" data-t="b_topo"></option></select>
+  <div class="keys" id="base-note"></div>
+  <label data-t="l_name"></label>
+  <input type="text" id="name" maxlength="60">
+  <button class="primary" id="run" disabled></button>
+  <div id="err"></div>
+  <pre id="log"></pre>
+  <p class="hint" data-t="hint"></p>
+  <button id="back" style="display:none;margin-top:8px" data-t="back"></button>
+</aside>
+<div id="stage"><div id="map"></div><div id="live"></div><iframe id="result" title="report"></iframe></div>
+</main>
+<script src="/vendor/leaflet.js"></script>
+<script>
+"use strict";
+const $=s=>document.querySelector(s);
+const map=L.map('map').setView([39,35],5);
+const tiles={osm:L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}),
+ topo:L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',{maxZoom:17,subdomains:'abc',attribution:'Map data &copy; OpenStreetMap contributors, SRTM | Style &copy; OpenTopoMap (CC-BY-SA)'}),
+ sat:L.tileLayer('https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless-2023_3857/default/g/{z}/{y}/{x}.jpg',{maxZoom:19,maxNativeZoom:15,attribution:'Sentinel-2 cloudless 2023 by EOX IT Services GmbH (s2maps.eu, CC BY-NC-SA 4.0; contains modified Copernicus Sentinel data 2023)'}),
+ relief:L.tileLayer('/tiles/relief/{z}/{x}/{y}.png',{maxZoom:19,maxNativeZoom:15,attribution:'Relief shaded from AWS Terrain Tiles (Mapzen; SRTM, GMTED, ETOPO1 and others)'})};
+tiles.osm.addTo(map);
+let tool=null, shape=null, pts=[], tmp=null, startLL=null, geom=null;
+const style={color:'#d55e00',weight:3,fillOpacity:.12};
+const drawStyle={color:'#d55e00',weight:4,opacity:.95,fillOpacity:.18}; // thicker while drawing
+const badStyle={color:'#b42318',weight:4,opacity:.95,fillOpacity:.2};
+
+// ---- language (shared with the report through localStorage: same origin)
+const T={
+ en:{tagline:'What changed here? Free Sentinel-2 imagery, no account. Runs locally (127.0.0.1).', l_area:'1. Draw your area (max '+(__MAX_AREA_KM2__).toLocaleString('en-US')+' km²)',
+  rect:'Rectangle', poly:'Polygon', finish:'Finish', clear:'Clear',
+  start:'Pick a tool, then draw on the map. Rectangle: press and drag. Polygon: click points, then Finish, Enter or double-click. The size is shown while you draw.',
+  keys:'Polygon keys: <kbd>Enter</kbd> finish · <kbd>Backspace</kbd> undo last point · <kbd>Esc</kbd> cancel',
+  l_after:'2. After (the recent window)', l_before:'3. Before: the year to compare with', sameMonth:'Same month as “after”, so both are the same season (different seasons make almost everything look changed).', yearsAgo:n=>n+(n===1?' year earlier':' years earlier'),  l_sens:'Sensitivity',
+  s_strict:'strict (fewer, stronger changes)', s_default:'default', s_sensitive:'sensitive (more, weaker changes)', l_mmu:'Smallest change to show',
+  mmu01:'0.1 ha (about 10 pixels at 10 m; finds more, also more noise)', mmu05:'0.5 ha (default)', mmu2:'2 ha (only larger changes)', l_base:'Basemap', b_none:'Satellite only', b_relief:'Relief (offline in the report)', b_osm:'OpenStreetMap (internet)', b_topo:'Topographic, OpenTopoMap (internet)',
+  noteNone:'Here: the cloudless Sentinel-2 mosaic of 2023 (EOX). In the report: the Sentinel-2 images of your own dates.', noteRelief:'Here: relief shaded from open elevation tiles (internet). In the report: the relief of the Copernicus DEM, read with the analysis (no internet needed).',
+  l_name:'Name (optional)', namePh:'My area',
+  run:'Run analysis', hint:'Typical run: 1–4 minutes (it reads only your area from public Sentinel-2 files). Compare the <b>same season</b> in different years to avoid false alarms from crops and snow. Contains modified Copernicus Sentinel data.',
+  back:'← Back to map', tooBig:(a,m)=>'Area too large: '+a+' km² (limit '+m+' km²). Press Clear and draw a smaller area.', tooBigBtn:a=>'Area too large ('+a+' km²)',
+  area:(a,r)=>'Area: '+a+' km² · read at about '+r+' m', coarser:' (larger areas use coarser pixels and take longer)', drawing:'Drawing: ', tooLarge:' (too large)',
+  clickPts:'Click points on the map.', need3:'A polygon needs at least 3 points.', pickAfter:'Pick the "after" month.', starting:'starting...', failed:'failed', drawn:'Drawn area', num:'en-US'},
+ tr:{tagline:'Burada ne değişti? Ücretsiz Sentinel-2 görüntüleri, hesap gerekmez. Bu bilgisayarda çalışır (127.0.0.1).', l_area:'1. Alanı çizin (en çok '+(__MAX_AREA_KM2__).toLocaleString('tr-TR')+' km²)',
+  rect:'Dikdörtgen', poly:'Çokgen', finish:'Bitir', clear:'Temizle',
+  start:'Bir araç seçip haritaya çizin. Dikdörtgen: basılı tutup sürükleyin. Çokgen: noktalara tıklayın, sonra Bitir, Enter ya da çift tıklama. Çizerken alan görünür.',
+  keys:'Çokgen tuşları: <kbd>Enter</kbd> bitir · <kbd>Backspace</kbd> son noktayı sil · <kbd>Esc</kbd> iptal',
+  l_after:'2. Sonra (yakın dönem)', l_before:'3. Önce: karşılaştırılacak yıl', sameMonth:'“Sonra” ile aynı ay; böylece ikisi de aynı mevsimde olur (farklı mevsimlerde neredeyse her yer değişmiş görünür).', yearsAgo:n=>n+' yıl önce',  l_sens:'Duyarlılık',
+  s_strict:'katı (daha az, daha güçlü değişim)', s_default:'varsayılan', s_sensitive:'duyarlı (daha çok, daha zayıf değişim)', l_mmu:'Gösterilecek en küçük değişim',
+  mmu01:'0,1 ha (10 m pikselde yaklaşık 10 piksel; daha çok bulur, gürültü de artar)', mmu05:'0,5 ha (varsayılan)', mmu2:'2 ha (yalnız büyük değişimler)', l_base:'Altlık', b_none:'Yalnız uydu', b_relief:'Kabartma (raporda internetsiz)', b_osm:'OpenStreetMap (internet)', b_topo:'Topoğrafik, OpenTopoMap (internet)',
+  noteNone:'Burada: 2023 yılının bulutsuz Sentinel-2 mozaiği (EOX). Raporda: sizin seçtiğiniz tarihlerin Sentinel-2 görüntüleri.', noteRelief:'Burada: açık yükseklik döşemelerinden gölgelenmiş kabartma (internet ister). Raporda: analizle okunan Copernicus DEM kabartması (internet gerekmez).',
+  l_name:'Ad (isteğe bağlı)', namePh:'Alanım',
+  run:'Analizi çalıştır', hint:'Bir analiz genellikle 1–4 dakika sürer (açık Sentinel-2 dosyalarından yalnız sizin alanınızı okur). Ekin ve kardan doğan yanlış alarmlardan kaçınmak için farklı yılların <b>aynı mevsimini</b> karşılaştırın. Değiştirilmiş Copernicus Sentinel verisi içerir.',
+  back:'← Haritaya dön', tooBig:(a,m)=>'Alan çok büyük: '+a+' km² (sınır '+m+' km²). Temizle deyip daha küçük bir alan çizin.', tooBigBtn:a=>'Alan çok büyük ('+a+' km²)',
+  area:(a,r)=>'Alan: '+a+' km² · yaklaşık '+r+' m çözünürlükte okunacak', coarser:' (büyük alanlar daha kaba piksellerle okunur ve daha uzun sürer)', drawing:'Çiziliyor: ', tooLarge:' (çok büyük)',
+  clickPts:'Haritada noktalara tıklayın.', need3:'Çokgen için en az 3 nokta gerekir.', pickAfter:'"Sonra" ayını seçin.', starting:'başlıyor...', failed:'başarısız', drawn:'Çizilen alan', num:'tr-TR'}
+};
+let lang='';
+try{ lang=localStorage.getItem('earthdiff-lang')||''; }catch(e){ lang=''; }
+if(!T[lang]) lang=(navigator.language||'').toLowerCase().startsWith('tr')?'tr':'en';
+const t=k=>T[lang][k];
+let lastInfo=null; // last info message as [key, ...args] so a language switch can re-render it
+function say(key,...args){ lastInfo=[key,...args]; const v=T[lang][key]; $('#info').textContent=typeof v==='function'?v(...args):v; }
+function applyLang(){
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-t]').forEach(el=>{ const v=T[lang][el.dataset.t]; if(typeof v==='string') el.innerHTML=v; });
+  document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===lang));
+  $('#name').placeholder=t('namePh');
+  if(geom&&lastGeomRing) setGeom(lastGeomRing); else if(!geom) $('#run').textContent=t('run');
+  if(lastInfo&&!geom) say(...lastInfo);
+}
+document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>{ lang=b.dataset.l; try{localStorage.setItem('earthdiff-lang',lang);}catch(e){} applyLang(); });
+const MAX_KM2=__MAX_AREA_KM2__; // filled in by the server (ui.py UI_MAX_AREA_KM2); the server checks it again
+const fmt=n=>Math.round(n).toLocaleString(t('num'));
+const fmt1=n=>n.toLocaleString(t('num'),{maximumFractionDigits:1});
+let lastGeomRing=null;
+function areaKm2(ring){ // equirectangular, fine for the areas we allow (up to a few thousand km2)
+  const lat0=ring.reduce((a,p)=>a+p[1],0)/ring.length*Math.PI/180, R=6371.0088;
+  const xy=ring.map(p=>[p[0]*Math.PI/180*Math.cos(lat0)*R,p[1]*Math.PI/180*R]); let a=0;
+  for(let i=0;i<xy.length;i++){const j=(i+1)%xy.length;a+=xy[i][0]*xy[j][1]-xy[j][0]*xy[i][1];} return Math.abs(a)/2;
+}
+function setGeom(ring){ // ring: [[lon,lat],...] not closed
+  lastGeomRing=ring; lastInfo=null;
+  const closed=ring.concat([ring[0]]); geom={type:'Polygon',coordinates:[closed]};
+  const a=areaKm2(ring), ok=a<=MAX_KM2, info=$('#info'), run=$('#run');
+  info.classList.toggle('bad',!ok);
+  if(shape&&shape.setStyle)shape.setStyle(ok?style:badStyle);
+  if(!ok){
+    info.textContent=t('tooBig')(fmt(a),fmt(MAX_KM2));
+    run.textContent=t('tooBigBtn')(fmt(a)); run.disabled=true; return;
+  }
+  const res=gridRes(ring);
+  info.textContent=t('area')(a<10?fmt1(a):fmt(a),res)+(res>10?t('coarser'):'');
+  run.textContent=t('run'); run.disabled=false;
+}
+function gridRes(ring){ // same idea as aoi.choose_resolution: smallest of 10/20/30/60 m with <= 4 M pixels in the bounding box
+  const lons=ring.map(p=>p[0]), lats=ring.map(p=>p[1]), lat0=(Math.min(...lats)+Math.max(...lats))/2*Math.PI/180;
+  const w=(Math.max(...lons)-Math.min(...lons))*111320*Math.cos(lat0), h=(Math.max(...lats)-Math.min(...lats))*110570;
+  for(const r of [10,20,30,60]) if((w/r)*(h/r)<=4e6) return r; return 60;
+}
+function clearAll(){ hideLive(); if(shape)map.removeLayer(shape); if(tmp)map.removeLayer(tmp); shape=tmp=null; pts=[]; geom=null; lastGeomRing=null; $('#run').disabled=true; $('#run').textContent=t('run'); $('#info').classList.remove('bad'); $('#b-fin').disabled=true; say('start'); }
+function setTool(t){ if(document.activeElement&&document.activeElement.blur)document.activeElement.blur(); /* so Enter finishes the polygon, not re-clicks the button */ tool=t; map.getContainer().style.cursor=t?'crosshair':''; if(t==='rect')map.dragging.disable(); else map.dragging.enable(); if(t)clearAll(); $('#b-fin').disabled=(t!=='poly'); }
+$('#b-rect').onclick=()=>setTool('rect'); $('#b-poly').onclick=()=>setTool('poly'); $('#b-clear').onclick=()=>{setTool(null);clearAll();};
+// live size while drawing: a label next to the cursor and the info line, red over the limit
+const rectRing=b=>[[b.getWest(),b.getSouth()],[b.getEast(),b.getSouth()],[b.getEast(),b.getNorth()],[b.getWest(),b.getNorth()]];
+function sizeText(ring){ const a=ring.length>2?areaKm2(ring):0; return {a, txt:(a<10?fmt1(a):fmt(a))+' km² / '+fmt(MAX_KM2)}; }
+function showLive(ring, pt, layers){
+  const {a,txt}=sizeText(ring), bad=a>MAX_KM2, live=$('#live'), info=$('#info');
+  live.textContent=txt+(bad?t('tooLarge'):''); live.classList.toggle('bad',bad);
+  live.style.left=(pt.x+16)+'px'; live.style.top=(pt.y+16)+'px'; live.style.display='block';
+  info.classList.toggle('bad',bad); lastInfo=null; info.textContent=t('drawing')+txt+' km²'+(bad?t('tooLarge'):'');
+  for(const l of layers) if(l&&l.setStyle) l.setStyle(bad?badStyle:drawStyle);
+}
+function hideLive(){ $('#live').style.display='none'; }
+function redrawPoly(cursor){ // drawn points plus the cursor, as a filled preview so the area is visible
+  if(tmp)map.removeLayer(tmp); if(shape)map.removeLayer(shape); tmp=shape=null;
+  const all=cursor?pts.concat([cursor]):pts.slice(); if(!all.length)return;
+  shape=(all.length>2?L.polygon(all,drawStyle):L.polyline(all,drawStyle)).addTo(map);
+  if(cursor) showLive(all.map(p=>[p.lng,p.lat]), map.latLngToContainerPoint(cursor), [shape]);
+}
+map.on('mousedown',e=>{ if(tool!=='rect')return; startLL=e.latlng; shape=L.rectangle([startLL,startLL],drawStyle).addTo(map); });
+map.on('mousemove',e=>{
+  if(tool==='rect'&&startLL&&shape){ const b=L.latLngBounds(startLL,e.latlng); shape.setBounds(b); showLive(rectRing(b), e.containerPoint, [shape]); }
+  else if(tool==='poly'&&pts.length){ redrawPoly(e.latlng); }
+});
+map.on('mouseup',e=>{ if(tool==='rect'&&startLL){ const b=L.latLngBounds(startLL,e.latlng); startLL=null; hideLive(); if(b.getSouthWest().equals(b.getNorthEast())){clearAll();return;}
+  shape.setStyle(style); setGeom(rectRing(b)); setTool(null); }});
+map.on('click',e=>{ if(tool!=='poly')return; pts.push(e.latlng); redrawPoly(e.latlng); });
+function finishPoly(){ if(tool!=='poly'||pts.length<3)return; hideLive(); if(tmp)map.removeLayer(tmp); if(shape)map.removeLayer(shape); tmp=null;
+  shape=L.polygon(pts,style).addTo(map); setGeom(pts.map(p=>[p.lng,p.lat])); pts=[]; setTool(null); }
+function undoPoint(){ if(tool!=='poly'||!pts.length)return; pts.pop(); if(pts.length)redrawPoly(null); else { if(shape)map.removeLayer(shape); shape=null; hideLive(); say('clickPts'); } }
+$('#b-fin').onclick=finishPoly; map.on('dblclick',e=>{ if(tool==='poly'){ pts.pop(); finishPoly(); } }); map.doubleClickZoom.disable();
+map.getContainer().addEventListener('mouseleave',hideLive);
+document.addEventListener('keydown',e=>{
+  if(tool!=='poly'&&!(tool==='rect'&&e.key==='Escape'))return;
+  if(/^(INPUT|SELECT|TEXTAREA)$/.test(document.activeElement&&document.activeElement.tagName))return;
+  if(e.key==='Enter'){ e.preventDefault(); if(pts.length<3){ say('need3'); return; } finishPoly(); }
+  else if(e.key==='Backspace'||e.key==='Delete'){ e.preventDefault(); undoPoint(); }
+  else if(e.key==='Escape'){ e.preventDefault(); startLL=null; setTool(null); clearAll(); }
+});
+
+// default after = last full month
+const d=new Date(); d.setMonth(d.getMonth()-1); $('#after').value=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');
+
+let timer=null;
+$('#run').onclick=async()=>{
+  $('#err').textContent=''; if(!geom)return;
+  const am=$('#after').value; const body={geometry:geom,after:am,before:(am&&$('#beforeYear').value)?($('#beforeYear').value+am.slice(4)):null,sensitivity:$('#sens').value,mmu_ha:Number($('#mmu').value),name:$('#name').value||t('drawn')};
+  if(!body.after){$('#err').textContent=t('pickAfter');return;}
+  $('#run').disabled=true; const log=$('#log'); log.style.display='block'; log.textContent=t('starting');
+  const r=await fetch('/api/run',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  const j=await r.json(); if(!r.ok){$('#err').textContent=j.error||t('failed');$('#run').disabled=false;return;}
+  timer=setInterval(()=>poll(j.id),1500);
+};
+async function poll(id){
+  const r=await fetch('/api/jobs/'+id); const j=await r.json(); const log=$('#log');
+  log.textContent=j.log.join('\n')+'\n('+j.elapsed_s+' s)'; log.scrollTop=log.scrollHeight;
+  if(j.status==='running')return; clearInterval(timer); $('#run').disabled=false;
+  if(j.status==='error'){$('#err').textContent=j.error;return;}
+  // the report opens with the basemap chosen here (its own 2D / 3D switch stays in the report)
+  $('#result').src=j.report_url+'#base='+encodeURIComponent($('#base').value); $('#result').style.display='block'; $('#map').style.display='none'; $('#back').style.display='block';
+}
+// ---- before year: the same month as "after", in an earlier year
+const pref=(k,v)=>{ try{ if(v===undefined) return localStorage.getItem('earthdiff-'+k); localStorage.setItem('earthdiff-'+k,v); }catch(e){ return null; } };
+function fillYears(){ const am=$('#after').value, sel=$('#beforeYear'), keep=sel.value; if(!am) return; const ay=+am.slice(0,4); sel.innerHTML='';
+  for(let y=ay-1;y>=2017;y--){ const o=document.createElement('option'); o.value=String(y); o.textContent=y+' ('+t('yearsAgo')(ay-y)+')'; sel.appendChild(o); }
+  if(keep && +keep<ay && +keep>=2017) sel.value=keep; }
+$('#after').addEventListener('change',fillYears);
+// ---- basemap, shown on the drawing map and used by the report; remembered for the next visit
+function notes(){ const b=$('#base').value; $('#base-note').textContent = b==='none'?t('noteNone'):b==='relief'?t('noteRelief'):''; }
+function setBase(v){ for(const k in tiles) if(map.hasLayer(tiles[k])) map.removeLayer(tiles[k]); tiles[v==='none'?'sat':v].addTo(map); pref('base',v); notes(); }
+$('#base').addEventListener('change',e=>setBase(e.target.value));
+{ const b=pref('base'); if(b && [...$('#base').options].some(o=>o.value===b)) $('#base').value=b; setBase($('#base').value); }
+const _applyLang=applyLang; applyLang=function(){ _applyLang(); fillYears(); notes(); };
+applyLang(); say('start');
+$('#back').onclick=()=>{$('#result').style.display='none';$('#map').style.display='block';$('#back').style.display='none';map.invalidateSize();};
+</script>
+</body>
+</html>

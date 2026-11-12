@@ -1,0 +1,122 @@
+{
+  "manavgat": {
+    "question": "What changed around Manavgat after the July 2021 wildfire?",
+    "place_query": "Manavgat",
+    "place_args": {
+      "country_codes": "tr",
+      "language": "en"
+    },
+    "area_choice": {
+      "candidate_name": "River",
+      "option": "centered_bbox"
+    },
+    "area_choice_note": "find_place returns two different places (the district and the river) and both are larger than the 400 km2 limit; the scripted user answer is 'the river valley, the centred part'.",
+    "name": "Manavgat wildfire 2021",
+    "before": "2021-07-01/2021-07-27",
+    "after": "2021-08-10/2021-09-10",
+    "resolution_m": 20
+  },
+  "lake_mead": {
+    "question": "How did Lake Mead change between July 2019 and July 2022?",
+    "place_query": "Lake Mead",
+    "place_args": {
+      "country_codes": "us",
+      "language": "en"
+    },
+    "area_choice": {
+      "candidate_name": "Lake Mead",
+      "rank": 1,
+      "option": "centered_bbox"
+    },
+    "area_choice_note": "find_place returns the reservoir in Nevada and a pond in Connecticut; the scripted user answer is 'the reservoir, the centred part (the whole lake is 3,100 km2 as a bounding box)'.",
+    "name": "Lake Mead 2019 vs 2022",
+    "before": "2019-07",
+    "after": "2022-07",
+    "resolution_m": 20
+  },
+  "tuz_golu": {
+    "question": "Did Lake Tuz (Salt Lake, Turkey) dry out between late summer 2019 and late summer 2021?",
+    "place_query": "Tuz Gölü",
+    "place_args": {
+      "country_codes": "tr",
+      "language": "en"
+    },
+    "area_choice": {
+      "candidate_name": "",
+      "rank": 1,
+      "option": "centered_bbox"
+    },
+    "area_choice_note": "find_place returns four small lakes called Tuz Gölü; the scripted user answer is 'the big one in Konya/Aksaray, the centred part'.",
+    "name": "Lake Tuz 2019 vs 2021",
+    "before": "2019-08/2019-09",
+    "after": "2021-08/2021-09",
+    "resolution_m": 20
+  },
+  "tuz_golu_spring": {
+    "question": "Did Lake Tuz dry out between spring 2021 and late summer 2021? (spring baseline instead of late summer)",
+    "place_query": "Tuz Gölü",
+    "place_args": {
+      "country_codes": "tr",
+      "language": "en"
+    },
+    "area_choice": {
+      "candidate_name": "",
+      "rank": 1,
+      "option": "centered_bbox"
+    },
+    "area_choice_note": "same box as tuz_golu",
+    "name": "Lake Tuz spring vs late summer 2021",
+    "before": "2021-03/2021-04",
+    "after": "2021-08/2021-09",
+    "resolution_m": 20
+  },
+  "istanbul_airport": {
+    "question": "What changed at the Istanbul Airport site between 2017 and 2019? (a known construction site: the likely-cause hint should NOT say fire)",
+    "area_choice": {
+      "bbox": [
+        28.62,
+        41.2,
+        28.85,
+        41.35
+      ]
+    },
+    "area_choice_note": "the scripted user states the box (about 321 km2)",
+    "name": "Istanbul Airport 2017 vs 2019",
+    "before": "2017-06/2017-09",
+    "after": "2019-06/2019-08",
+    "resolution_m": 20
+  },
+  "konya_plain": {
+    "question": "What changed on an irrigated cropland patch of the Konya plain between May and July 2023? (harvest example, seasonal check off)",
+    "area_choice": {
+      "bbox": [
+        32.7,
+        37.58,
+        32.78,
+        37.63
+      ]
+    },
+    "area_choice_note": "the scripted user states a small public area (about 39 km2) near Cumra; the windows are deliberately 61 days apart (wheat ripe in May, harvested by July)",
+    "name": "Konya plain 2023",
+    "before": "2023-05",
+    "after": "2023-07",
+    "resolution_m": 20
+  },
+  "konya_plain_seasonal": {
+    "question": "Same as konya_plain, with seasonal_check on",
+    "area_choice": {
+      "bbox": [
+        32.7,
+        37.58,
+        32.78,
+        37.63
+      ]
+    },
+    "area_choice_note": "the scripted user states a small public area (about 39 km2) near Cumra; the windows are deliberately 61 days apart (wheat ripe in May, harvested by July)",
+    "name": "Konya plain 2023 seasonal",
+    "before": "2023-05",
+    "after": "2023-07",
+    "resolution_m": 20,
+    "seasonal_check": true
+  }
+}

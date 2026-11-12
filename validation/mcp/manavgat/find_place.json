@@ -1,0 +1,118 @@
+{
+ "status": "ambiguous",
+ "query": "Manavgat",
+ "candidates": [
+  {
+   "rank": 1,
+   "name": "Manavgat",
+   "display_name": "Manavgat, Antalya, Mediterranean Region, Turkey",
+   "osm_kind": "boundary/administrative",
+   "osm": "relation/1726993",
+   "center_lon_lat": [
+    31.44067,
+    36.78701
+   ],
+   "bbox_west_south_east_north": [
+    31.03169,
+    36.66246,
+    31.7655,
+    37.45729
+   ],
+   "area_km2": 5755.18,
+   "fits_analysis_limit": false,
+   "narrowing_options": {
+    "why": "The bounding box is 5,755 km2 and the analysis limit is 400 km2. Ask the user which part matters, or offer one of these.",
+    "centered_bbox": {
+     "bbox_west_south_east_north": [
+      31.30683,
+      36.96048,
+      31.49036,
+      37.15927
+     ],
+     "area_km2": 360.0
+    },
+    "tiles": [],
+    "tiles_note": "The area is too large to cover with at most 9 tiles; ask the user for a smaller area of interest."
+   }
+  },
+  {
+   "rank": 2,
+   "name": "Manavgat River",
+   "display_name": "Manavgat River, Antalya, Mediterranean Region, Turkey",
+   "osm_kind": "waterway/river",
+   "osm": "relation/13124186",
+   "center_lon_lat": [
+    31.58663,
+    36.95673
+   ],
+   "bbox_west_south_east_north": [
+    31.44243,
+    36.73684,
+    31.72354,
+    37.2482
+   ],
+   "area_km2": 1419.53,
+   "fits_analysis_limit": false,
+   "narrowing_options": {
+    "why": "The bounding box is 1,420 km2 and the analysis limit is 400 km2. Ask the user which part matters, or offer one of these.",
+    "centered_bbox": {
+     "bbox_west_south_east_north": [
+      31.51221,
+      36.86376,
+      31.65377,
+      37.12127
+     ],
+     "area_km2": 360.0
+    },
+    "tiles": [
+     {
+      "label": "north-west",
+      "bbox_west_south_east_north": [
+       31.44243,
+       36.99252,
+       31.58299,
+       37.2482
+      ],
+      "area_km2": 354.3
+     },
+     {
+      "label": "north-east",
+      "bbox_west_south_east_north": [
+       31.58299,
+       36.99252,
+       31.72354,
+       37.2482
+      ],
+      "area_km2": 354.3
+     },
+     {
+      "label": "south-west",
+      "bbox_west_south_east_north": [
+       31.44243,
+       36.73684,
+       31.58299,
+       36.99252
+      ],
+      "area_km2": 355.5
+     },
+     {
+      "label": "south-east",
+      "bbox_west_south_east_north": [
+       31.58299,
+       36.73684,
+       31.72354,
+       36.99252
+      ],
+      "area_km2": 355.5
+     }
+    ],
+    "tiles_note": null
+   }
+  }
+ ],
+ "analysis_limit_km2": 400.0,
+ "margin_km": 0.0,
+ "next_step": "Several different places match. Do not guess: show the candidates and ask which one the user means (unless the user already made it clear, for example 'the lake'; then say which candidate you used).",
+ "from_cache": true,
+ "attribution": "Place search: (c) OpenStreetMap contributors (ODbL), via Nominatim"
+}

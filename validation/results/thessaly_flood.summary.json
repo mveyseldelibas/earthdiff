@@ -1,0 +1,140 @@
+{
+  "name": "Thessaly flood after Storm Daniel (Greece), Sep 2023",
+  "version": "0.1.0",
+  "generated": "2026-11-02 17:30 UTC",
+  "before_label": "2023-08-15 .. 2023-08-31",
+  "after_label": "2023-09-08 .. 2023-09-30",
+  "aoi_km2": 294.28,
+  "resolution_m": 10.0,
+  "valid_fraction": 0.9997,
+  "scenes_before": 4,
+  "scenes_after": 5,
+  "mmu_ha": 0.5,
+  "sensitivity": "default",
+  "backend": "earth-search",
+  "backend_attribution": "Element 84 Earth Search (Sentinel-2 L2A COGs on AWS Open Data)",
+  "before_period": [
+    "2023-08-15",
+    "2023-08-31"
+  ],
+  "after_period": [
+    "2023-09-08",
+    "2023-09-30"
+  ],
+  "totals": {
+    "vegetation_loss": {
+      "label": "Vegetation loss",
+      "polygons": 254,
+      "area_ha": 823.38
+    },
+    "vegetation_gain": {
+      "label": "Vegetation gain",
+      "polygons": 81,
+      "area_ha": 150.4
+    },
+    "new_water": {
+      "label": "New water",
+      "polygons": 41,
+      "area_ha": 3860.61
+    },
+    "water_loss": {
+      "label": "Water loss",
+      "polygons": 0,
+      "area_ha": 0
+    },
+    "new_bare_or_built": {
+      "label": "New bare soil / built-up",
+      "polygons": 30,
+      "area_ha": 50.11
+    }
+  },
+  "changed_fraction_of_aoi": 0.166,
+  "warnings": [],
+  "scenes": [
+    {
+      "period": "before (2023-08-15 .. 2023-08-31)",
+      "id": "S2A_34SFJ_20230816_0_L2A",
+      "date": "2023-08-16",
+      "cloud_cover": 1.603123,
+      "valid_fraction": 0.9998
+    },
+    {
+      "period": "before (2023-08-15 .. 2023-08-31)",
+      "id": "S2B_34SFJ_20230821_0_L2A",
+      "date": "2023-08-21",
+      "cloud_cover": 0.003245,
+      "valid_fraction": 0.9998
+    },
+    {
+      "period": "before (2023-08-15 .. 2023-08-31)",
+      "id": "S2A_34SFJ_20230826_0_L2A",
+      "date": "2023-08-26",
+      "cloud_cover": 46.028459,
+      "valid_fraction": 0.6518
+    },
+    {
+      "period": "before (2023-08-15 .. 2023-08-31)",
+      "id": "S2B_34SFJ_20230831_0_L2A",
+      "date": "2023-08-31",
+      "cloud_cover": 1.218888,
+      "valid_fraction": 0.9998
+    },
+    {
+      "period": "after (2023-09-08 .. 2023-09-30)",
+      "id": "S2B_34SFJ_20230910_0_L2A",
+      "date": "2023-09-10",
+      "cloud_cover": 6.029816,
+      "valid_fraction": 0.9793
+    },
+    {
+      "period": "after (2023-09-08 .. 2023-09-30)",
+      "id": "S2A_34SFJ_20230915_0_L2A",
+      "date": "2023-09-15",
+      "cloud_cover": 15.110886,
+      "valid_fraction": 0.7304
+    },
+    {
+      "period": "after (2023-09-08 .. 2023-09-30)",
+      "id": "S2B_34SFJ_20230920_0_L2A",
+      "date": "2023-09-20",
+      "cloud_cover": 38.639158,
+      "valid_fraction": 0.8187
+    },
+    {
+      "period": "after (2023-09-08 .. 2023-09-30)",
+      "id": "S2A_34SFJ_20230925_0_L2A",
+      "date": "2023-09-25",
+      "cloud_cover": 64.204788,
+      "valid_fraction": 0.6449
+    },
+    {
+      "period": "after (2023-09-08 .. 2023-09-30)",
+      "id": "S2B_34SFJ_20230930_0_L2A",
+      "date": "2023-09-30",
+      "cloud_cover": 47.553334,
+      "valid_fraction": 0.5857
+    }
+  ],
+  "thresholds": {
+    "veg_min_before": 0.4,
+    "veg_drop": 0.25,
+    "veg_min_after": 0.4,
+    "veg_rise": 0.25,
+    "water_mndwi": 0.1,
+    "land_mndwi": -0.05,
+    "water_ndvi_max": 0.3,
+    "water_delta": 0.25,
+    "bare_rise": 0.15,
+    "bare_ndvi_max": 0.25
+  },
+  "attribution": "Contains modified Copernicus Sentinel data 2023",
+  "files": {
+    "geojson": "changes.geojson",
+    "class_tif": "change_class.tif",
+    "before": "before.png",
+    "after": "after.png",
+    "change_map": "change_map.png",
+    "overview": "overview.png",
+    "report": "report.html"
+  }
+}

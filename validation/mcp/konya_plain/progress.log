@@ -1,0 +1,28 @@
+   0.0s   2.00  area prepared
+   0.0s   4.00  searching Sentinel-2 scenes
+   4.7s   7.00  found 10 candidate scenes (before) and 11 (after)
+   4.7s   8.00  before: checking cloud cover of candidate scenes
+   7.4s  14.00  before: downloading band 1 of 6 (blue)
+   8.0s  14.01  before: downloading band 1 of 6 (blue) (8 s)
+  11.6s  19.40  before: downloading band 2 of 6 (green)
+  15.8s  24.80  before: downloading band 3 of 6 (red)
+  16.0s  24.81  before: downloading band 3 of 6 (red) (16 s)
+  19.9s  30.20  before: downloading band 4 of 6 (nir)
+  24.1s  30.21  before: downloading band 4 of 6 (nir) (24 s)
+  24.1s  35.60  before: downloading band 5 of 6 (swir16)
+  28.3s  41.00  before: downloading band 6 of 6 (swir22)
+  31.7s  47.00  after: checking cloud cover of candidate scenes
+  32.1s  47.01  after: checking cloud cover of candidate scenes (32 s)
+  34.4s  53.00  after: downloading band 1 of 6 (blue)
+  38.5s  58.40  after: downloading band 2 of 6 (green)
+  40.1s  58.41  after: downloading band 2 of 6 (green) (40 s)
+  42.5s  63.80  after: downloading band 3 of 6 (red)
+  46.7s  69.20  after: downloading band 4 of 6 (nir)
+  48.1s  69.21  after: downloading band 4 of 6 (nir) (48 s)
+  50.7s  74.60  after: downloading band 5 of 6 (swir16)
+  54.7s  80.00  after: downloading band 6 of 6 (swir22)
+  56.1s  80.01  after: downloading band 6 of 6 (swir22) (56 s)
+  58.2s  88.00  detecting changes
+  58.4s  94.00  rendering report and maps
+  60.6s  99.00  finished
+  60.7s 100.00  done

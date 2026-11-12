@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+dist/
+build/
+*.egg-info/
+report/
+runs/
+validation/runs/
+.env*
+validation/mcp_runs/
+validation/cause_runs/
+validation/mcp/*/*.tif
+validation/mcp/*/*/*.tif

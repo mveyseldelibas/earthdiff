@@ -1,0 +1,89 @@
+{
+ "status": "ready",
+ "today": "2026-11-06",
+ "area": {
+  "bbox_west_south_east_north": [
+   33.36096,
+   38.71086,
+   33.54119,
+   38.91818
+  ],
+  "center_lon_lat": [
+   33.45108,
+   38.81452
+  ],
+  "area_km2": 359.99
+ },
+ "before_window": {
+  "label": "2021-03 .. 2021-04",
+  "start": "2021-03-01",
+  "end": "2021-04-30",
+  "defaulted_to_same_period_last_year": false
+ },
+ "after_window": {
+  "label": "2021-08 .. 2021-09",
+  "start": "2021-08-01",
+  "end": "2021-09-30"
+ },
+ "season_gap_days": 153,
+ "resolution_m": 20.0,
+ "grid_pixels": 911295,
+ "candidate_scenes": {
+  "before": 25,
+  "after": 30,
+  "before_dates": [
+   "2021-03-02",
+   "2021-03-04",
+   "2021-03-07",
+   "2021-03-09",
+   "2021-03-12",
+   "2021-03-19",
+   "2021-03-22",
+   "2021-03-27",
+   "2021-03-29",
+   "2021-04-03",
+   "2021-04-11",
+   "2021-04-13",
+   "2021-04-21",
+   "2021-04-23",
+   "2021-04-28"
+  ],
+  "after_dates": [
+   "2021-08-01",
+   "2021-08-04",
+   "2021-08-06",
+   "2021-08-16",
+   "2021-08-19",
+   "2021-08-21",
+   "2021-08-24",
+   "2021-08-26",
+   "2021-08-29",
+   "2021-08-31",
+   "2021-09-05",
+   "2021-09-08",
+   "2021-09-10",
+   "2021-09-18",
+   "2021-09-20",
+   "2021-09-28"
+  ]
+ },
+ "expected_runtime": "usually 1 to 3 minutes",
+ "seasonal_check": {
+  "enabled": false,
+  "earlier_years_checked": 2,
+  "extra_windows": [
+   "2020-03 .. 2020-04",
+   "2020-08 .. 2020-09",
+   "2019-03 .. 2019-04",
+   "2019-08 .. 2019-09"
+  ],
+  "extra_composites_at_most": 4,
+  "extra_time": "typically adds about 45 seconds or more (measured +47 s on a 39 km2 test: 4 small composites, +75% on a 61 s run); it is off by default",
+  "what_it_does": "flags vegetation-loss polygons whose NDVI also fell in the same windows of earlier years (likely harvest or a seasonal cycle); polygons are never removed"
+ },
+ "warnings": [
+  "The two windows are 153 days apart in the seasonal cycle. Vegetation and water change naturally with the season: compare the same time of year in different years to avoid false alarms."
+ ],
+ "next_step": "Call detect_change with the same arguments.",
+ "attribution": "Scene search: Element 84 Earth Search (Sentinel-2 L2A COGs on AWS Open Data)"
+}

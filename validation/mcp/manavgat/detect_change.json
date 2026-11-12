@@ -1,0 +1,481 @@
+{
+ "name": "Manavgat wildfire 2021",
+ "earthdiff_version": "0.2.0",
+ "before_window": {
+  "label": "2021-07-01 .. 2021-07-27",
+  "defaulted_to_same_period_last_year": false
+ },
+ "after_window": {
+  "label": "2021-08-10 .. 2021-09-10"
+ },
+ "area_km2": 359.98,
+ "resolution_m": 20.0,
+ "comparable_fraction": 1.0,
+ "scenes": {
+  "before": 8,
+  "after": 8,
+  "detail": [
+   {
+    "period": "before (2021-07-01 .. 2021-07-27)",
+    "date": "2021-07-05",
+    "scene_cloud_cover": 2.6,
+    "cloud_free_share_of_area": 0.6011
+   },
+   {
+    "period": "before (2021-07-01 .. 2021-07-27)",
+    "date": "2021-07-05",
+    "scene_cloud_cover": 9.2,
+    "cloud_free_share_of_area": 0.4806
+   },
+   {
+    "period": "before (2021-07-01 .. 2021-07-27)",
+    "date": "2021-07-10",
+    "scene_cloud_cover": 11.7,
+    "cloud_free_share_of_area": 0.6666
+   },
+   {
+    "period": "before (2021-07-01 .. 2021-07-27)",
+    "date": "2021-07-15",
+    "scene_cloud_cover": 0.0,
+    "cloud_free_share_of_area": 0.6773
+   },
+   {
+    "period": "before (2021-07-01 .. 2021-07-27)",
+    "date": "2021-07-15",
+    "scene_cloud_cover": 0.0,
+    "cloud_free_share_of_area": 0.667
+   },
+   {
+    "period": "before (2021-07-01 .. 2021-07-27)",
+    "date": "2021-07-20",
+    "scene_cloud_cover": 0.0,
+    "cloud_free_share_of_area": 0.6768
+   },
+   {
+    "period": "before (2021-07-01 .. 2021-07-27)",
+    "date": "2021-07-20",
+    "scene_cloud_cover": 0.0,
+    "cloud_free_share_of_area": 0.667
+   },
+   {
+    "period": "before (2021-07-01 .. 2021-07-27)",
+    "date": "2021-07-25",
+    "scene_cloud_cover": 14.2,
+    "cloud_free_share_of_area": 0.3525
+   },
+   {
+    "period": "after (2021-08-10 .. 2021-09-10)",
+    "date": "2021-08-14",
+    "scene_cloud_cover": 0.0,
+    "cloud_free_share_of_area": 0.6773
+   },
+   {
+    "period": "after (2021-08-10 .. 2021-09-10)",
+    "date": "2021-08-14",
+    "scene_cloud_cover": 8.4,
+    "cloud_free_share_of_area": 0.667
+   },
+   {
+    "period": "after (2021-08-10 .. 2021-09-10)",
+    "date": "2021-08-24",
+    "scene_cloud_cover": 0.0,
+    "cloud_free_share_of_area": 0.6771
+   },
+   {
+    "period": "after (2021-08-10 .. 2021-09-10)",
+    "date": "2021-08-24",
+    "scene_cloud_cover": 0.0,
+    "cloud_free_share_of_area": 0.667
+   },
+   {
+    "period": "after (2021-08-10 .. 2021-09-10)",
+    "date": "2021-09-03",
+    "scene_cloud_cover": 0.0,
+    "cloud_free_share_of_area": 0.6773
+   },
+   {
+    "period": "after (2021-08-10 .. 2021-09-10)",
+    "date": "2021-09-03",
+    "scene_cloud_cover": 1.5,
+    "cloud_free_share_of_area": 0.667
+   },
+   {
+    "period": "after (2021-08-10 .. 2021-09-10)",
+    "date": "2021-09-08",
+    "scene_cloud_cover": 0.2,
+    "cloud_free_share_of_area": 0.6773
+   },
+   {
+    "period": "after (2021-08-10 .. 2021-09-10)",
+    "date": "2021-09-08",
+    "scene_cloud_cover": 0.4,
+    "cloud_free_share_of_area": 0.6654
+   }
+  ]
+ },
+ "changes": [
+  {
+   "class": "vegetation_loss",
+   "label": "Vegetation loss",
+   "area_ha": 3118.56,
+   "polygons": 291
+  },
+  {
+   "class": "vegetation_gain",
+   "label": "Vegetation gain",
+   "area_ha": 6.0,
+   "polygons": 7
+  },
+  {
+   "class": "new_water",
+   "label": "New water",
+   "area_ha": 0,
+   "polygons": 0
+  },
+  {
+   "class": "water_loss",
+   "label": "Water loss",
+   "area_ha": 6.2,
+   "polygons": 2
+  },
+  {
+   "class": "new_bare_or_built",
+   "label": "New bare soil / built-up",
+   "area_ha": 44.2,
+   "polygons": 29
+  }
+ ],
+ "total_changed_ha": 3174.96,
+ "changed_fraction_of_area": 0.0882,
+ "confidence": {
+  "area_weighted_mean": 0.8,
+  "level": "high",
+  "share_of_changed_area": {
+   "high": 0.917,
+   "medium": 0.081,
+   "low": 0.002
+  },
+  "note": "Heuristic score from 0 to 1 (magnitude of the index change, number of valid observations, size). It is not a probability of being correct."
+ },
+ "vegetation_loss_likely_cause": {
+  "applies_to": "vegetation_loss polygons",
+  "totals": {
+   "fire-like": {
+    "polygons": 264,
+    "area_ha": 3074.84
+   },
+   "clearing-like": {
+    "polygons": 14,
+    "area_ha": 17.0
+   },
+   "unclear": {
+    "polygons": 13,
+    "area_ha": 26.72
+   }
+  },
+  "note": "A hint from dNBR, brightness and shape, not a verdict on the cause. 'fire-like' does not prove a fire; 'clearing-like' covers felling, harvest, ploughing and construction.",
+  "thresholds": {
+   "dnbr_unburned_below": 0.1,
+   "dnbr_moderate_low": 0.27,
+   "dnbr_moderate_high": 0.44,
+   "dark_visible_reflectance_after_at_most": 0.09,
+   "bright_visible_reflectance_after_at_least": 0.2,
+   "straight_edged_rectangularity_at_least": 0.8,
+   "irregular_rectangularity_at_most": 0.6
+  },
+  "sources": [
+   "Key & Benson (2006) FIREMON Landscape Assessment: dNBR severity thresholds 0.10 / 0.27 / 0.44 / 0.66",
+   "Copernicus EFFIS fire severity (same thresholds applied to Sentinel-2): https://forest-fire.emergency.copernicus.eu/about-effis/technical-background/fire-severity",
+   "UN-SPIDER recommended practice: burn severity mapping with NBR / dNBR"
+  ],
+  "own_thresholds": "brightness and rectangularity thresholds are this project's heuristics, checked on only two public cases"
+ },
+ "seasonal_check": null,
+ "bright_surface": {
+  "fraction_of_comparable_area": 0.0068,
+  "fraction_in_both_periods": 0.0038,
+  "warn_threshold": 0.2,
+  "reliable": true,
+  "rule": "mean(blue, green, red) >= 0.25 and NDVI < 0.15 in the before or after composite (salt, sand, snow, bare limestone, concrete)"
+ },
+ "data_quality": {
+  "level": "good",
+  "reasons": [],
+  "note": "Grades the data behind the comparison, not the correctness of the polygons; even 'good' is unverified by field data."
+ },
+ "largest_areas": [
+  {
+   "id": 1,
+   "class": "vegetation_loss",
+   "area_ha": 892.12,
+   "confidence": 0.83,
+   "confidence_level": "high",
+   "centroid_lon_lat": [
+    31.5603,
+    36.894174
+   ],
+   "ndvi_before_after": [
+    0.665,
+    0.249
+   ],
+   "mndwi_before_after": [
+    -0.485,
+    -0.628
+   ],
+   "bsi_before_after": [
+    -0.115,
+    0.295
+   ],
+   "valid_obs_before_after": [
+    4.0,
+    4.0
+   ],
+   "likely_cause": "fire-like",
+   "likely_cause_basis": "dNBR 0.60 (at least moderate-high burn severity by Key & Benson thresholds); dark after (visible reflectance 0.05), like char or ash; irregular outline (rectangularity 0.44)",
+   "dnbr": 0.6,
+   "bright_share": 0.0
+  },
+  {
+   "id": 2,
+   "class": "vegetation_loss",
+   "area_ha": 437.8,
+   "confidence": 0.84,
+   "confidence_level": "high",
+   "centroid_lon_lat": [
+    31.51792,
+    36.926847
+   ],
+   "ndvi_before_after": [
+    0.658,
+    0.238
+   ],
+   "mndwi_before_after": [
+    -0.483,
+    -0.609
+   ],
+   "bsi_before_after": [
+    -0.102,
+    0.284
+   ],
+   "valid_obs_before_after": [
+    4.0,
+    4.0
+   ],
+   "likely_cause": "fire-like",
+   "likely_cause_basis": "dNBR 0.57 (at least moderate-high burn severity by Key & Benson thresholds); dark after (visible reflectance 0.06), like char or ash; irregular outline (rectangularity 0.32)",
+   "dnbr": 0.569,
+   "bright_share": 0.0
+  },
+  {
+   "id": 3,
+   "class": "vegetation_loss",
+   "area_ha": 239.6,
+   "confidence": 0.82,
+   "confidence_level": "high",
+   "centroid_lon_lat": [
+    31.638118,
+    36.878902
+   ],
+   "ndvi_before_after": [
+    0.699,
+    0.287
+   ],
+   "mndwi_before_after": [
+    -0.499,
+    -0.576
+   ],
+   "bsi_before_after": [
+    -0.152,
+    0.212
+   ],
+   "valid_obs_before_after": [
+    3.8,
+    4.0
+   ],
+   "likely_cause": "fire-like",
+   "likely_cause_basis": "dNBR 0.46 (at least moderate-high burn severity by Key & Benson thresholds); dark after (visible reflectance 0.05), like char or ash; irregular outline (rectangularity 0.38)",
+   "dnbr": 0.459,
+   "bright_share": 0.0
+  },
+  {
+   "id": 4,
+   "class": "vegetation_loss",
+   "area_ha": 119.8,
+   "confidence": 0.85,
+   "confidence_level": "high",
+   "centroid_lon_lat": [
+    31.524307,
+    36.962413
+   ],
+   "ndvi_before_after": [
+    0.622,
+    0.199
+   ],
+   "mndwi_before_after": [
+    -0.522,
+    -0.614
+   ],
+   "bsi_before_after": [
+    -0.071,
+    0.328
+   ],
+   "valid_obs_before_after": [
+    7.7,
+    8.0
+   ],
+   "likely_cause": "fire-like",
+   "likely_cause_basis": "dNBR 0.64 (at least moderate-high burn severity by Key & Benson thresholds); dark after (visible reflectance 0.07), like char or ash; irregular outline (rectangularity 0.31)",
+   "dnbr": 0.643,
+   "bright_share": 0.0
+  },
+  {
+   "id": 5,
+   "class": "vegetation_loss",
+   "area_ha": 83.44,
+   "confidence": 0.82,
+   "confidence_level": "high",
+   "centroid_lon_lat": [
+    31.519188,
+    36.936756
+   ],
+   "ndvi_before_after": [
+    0.638,
+    0.23
+   ],
+   "mndwi_before_after": [
+    -0.533,
+    -0.629
+   ],
+   "bsi_before_after": [
+    -0.048,
+    0.32
+   ],
+   "valid_obs_before_after": [
+    3.5,
+    4.0
+   ],
+   "likely_cause": "fire-like",
+   "likely_cause_basis": "dNBR 0.59 (at least moderate-high burn severity by Key & Benson thresholds); dark after (visible reflectance 0.06), like char or ash; irregular outline (rectangularity 0.42)",
+   "dnbr": 0.592,
+   "bright_share": 0.0
+  },
+  {
+   "id": 6,
+   "class": "vegetation_loss",
+   "area_ha": 72.44,
+   "confidence": 0.75,
+   "confidence_level": "high",
+   "centroid_lon_lat": [
+    31.639475,
+    36.916257
+   ],
+   "ndvi_before_after": [
+    0.671,
+    0.265
+   ],
+   "mndwi_before_after": [
+    -0.541,
+    -0.645
+   ],
+   "bsi_before_after": [
+    -0.092,
+    0.296
+   ],
+   "valid_obs_before_after": [
+    2.4,
+    4.0
+   ],
+   "likely_cause": "fire-like",
+   "likely_cause_basis": "dNBR 0.53 (at least moderate-high burn severity by Key & Benson thresholds); dark after (visible reflectance 0.05), like char or ash; irregular outline (rectangularity 0.39)",
+   "dnbr": 0.534,
+   "bright_share": 0.0
+  },
+  {
+   "id": 7,
+   "class": "vegetation_loss",
+   "area_ha": 56.88,
+   "confidence": 0.85,
+   "confidence_level": "high",
+   "centroid_lon_lat": [
+    31.600369,
+    36.893876
+   ],
+   "ndvi_before_after": [
+    0.714,
+    0.291
+   ],
+   "mndwi_before_after": [
+    -0.502,
+    -0.602
+   ],
+   "bsi_before_after": [
+    -0.143,
+    0.228
+   ],
+   "valid_obs_before_after": [
+    4.0,
+    4.0
+   ],
+   "likely_cause": "fire-like",
+   "likely_cause_basis": "dNBR 0.45 (at least moderate-high burn severity by Key & Benson thresholds); dark after (visible reflectance 0.05), like char or ash",
+   "dnbr": 0.448,
+   "bright_share": 0.0
+  },
+  {
+   "id": 8,
+   "class": "vegetation_loss",
+   "area_ha": 51.2,
+   "confidence": 0.89,
+   "confidence_level": "high",
+   "centroid_lon_lat": [
+    31.599013,
+    36.906654
+   ],
+   "ndvi_before_after": [
+    0.657,
+    0.212
+   ],
+   "mndwi_before_after": [
+    -0.547,
+    -0.661
+   ],
+   "bsi_before_after": [
+    -0.069,
+    0.366
+   ],
+   "valid_obs_before_after": [
+    4.0,
+    4.0
+   ],
+   "likely_cause": "fire-like",
+   "likely_cause_basis": "dNBR 0.70 (at least moderate-high burn severity by Key & Benson thresholds); dark after (visible reflectance 0.05), like char or ash; irregular outline (rectangularity 0.47)",
+   "dnbr": 0.696,
+   "bright_share": 0.0
+  }
+ ],
+ "warnings": [],
+ "files": {
+  "output_dir": "validation/mcp_runs/20261106-043636_Manavgat_wildfire_2021",
+  "report_html": "validation/mcp_runs/20261106-043636_Manavgat_wildfire_2021/report.html",
+  "changes_geojson": "validation/mcp_runs/20261106-043636_Manavgat_wildfire_2021/changes.geojson",
+  "summary_json": "validation/mcp_runs/20261106-043636_Manavgat_wildfire_2021/summary.json",
+  "before_png": "validation/mcp_runs/20261106-043636_Manavgat_wildfire_2021/before.png",
+  "after_png": "validation/mcp_runs/20261106-043636_Manavgat_wildfire_2021/after.png",
+  "change_map_png": "validation/mcp_runs/20261106-043636_Manavgat_wildfire_2021/change_map.png",
+  "overview_png": "validation/mcp_runs/20261106-043636_Manavgat_wildfire_2021/overview.png",
+  "change_class_tif": "validation/mcp_runs/20261106-043636_Manavgat_wildfire_2021/change_class.tif"
+ },
+ "attribution": "Contains modified Copernicus Sentinel data 2021",
+ "backend": "Element 84 Earth Search (Sentinel-2 L2A COGs on AWS Open Data)",
+ "elapsed_seconds": 118.0,
+ "present_to_user": [
+  "The three images (before, after, detected changes) are returned with this result; refer to them.",
+  "Give hectares and polygon counts per class, the comparable share of the area, the confidence and the data quality, and EVERY warning above.",
+  "Say what the classes mean (a spectral change). likely_cause is only a hint from dNBR, brightness and shape: say 'fire-like' or 'clearing-like', never 'it was a fire'; drought, harvest and construction can look alike.",
+  "If seasonal_check is present, report the hectares flagged likely_seasonal (they repeat in earlier years, so probably harvest or a seasonal cycle); those polygons are kept.",
+  "If bright_surface.reliable is false, say that change on salt, sand or snow is not reliable and that no change there must not be read as no change; the confidence was lowered.",
+  "earthdiff is a screening tool: it flags where free Sentinel-2 imagery changed. It is not an official damage, burned-area, flood or deforestation assessment.",
+  "Credit the data: Contains modified Copernicus Sentinel data 2021.",
+  "Tell the user where report.html (interactive swipe map) and changes.geojson were saved."
+ ]
+}
