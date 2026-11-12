@@ -105,6 +105,16 @@ Other free, key-less MCP servers cover parts of this: for example `stac-eo-mcp`,
 
 ---
 
+## QGIS plugin
+
+A QGIS panel (QGIS 3.28+ and QGIS 4): pick the map view, a drawn rectangle or selected polygons and two dates; the change
+polygons, a class raster and before/after images come back as styled layers, with every warning in the panel.
+See [qgis/README.md](qgis/README.md).
+
+![The earthdiff panel in QGIS](https://raw.githubusercontent.com/mveyseldelibas/earthdiff/main/docs/images/qgis-plugin.jpg)
+
+---
+
 ## Command line and report
 
 **Draw an area. Get an explainable "what changed here?" report from free Sentinel-2 imagery.**
@@ -305,6 +315,12 @@ Claude Desktop ve Cursor için yukarıdaki JSON bloğunu `claude_desktop_config.
 **Sınırlar:** earthdiff bir **ön tarama aracıdır, resmi hasar tespiti değildir**. Neyin değiştiğini söyler, nedenini söylemez (yangın, kesim, hasat, kuraklık, inşaat benzer görünebilir). Mevsim ve tarım etkisi, bulut/gölge, parlak yüzeyler (tuz, kum, kar), 10-60 m çözünürlük ve 0,5 ha altı değişiklikler sınırlayıcıdır. Önemli kararlar için yüksek çözünürlüklü veri veya saha doğrulaması gerekir.
 
 **Atıf:** *Contains modified Copernicus Sentinel data* (kullanılan yıllar). Yer araması: (c) OpenStreetMap katkıcıları (ODbL).
+
+## QGIS eklentisi
+
+QGIS 3.28+ ve QGIS 4 için bir panel: harita görünümünü, çizilen bir dikdörtgeni ya da seçili poligonları ve iki tarihi seçin;
+değişim poligonları, sınıf rasterı ve önce/sonra görüntüleri renklendirilmiş katman olarak gelir, bütün uyarılar panelde görünür.
+Ayrıntılar: [qgis/README.md](qgis/README.md#türkçe).
 
 ## Komut satırı
 

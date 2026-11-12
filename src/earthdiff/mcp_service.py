@@ -744,6 +744,8 @@ class EarthDiffService:
             "change_map_png": str(res.files["change_map"]),
             "overview_png": str(res.files["overview"]),
             "change_class_tif": str(res.files["class_tif"]),
+            "before_tif": str(res.files["before_tif"]),
+            "after_tif": str(res.files["after_tif"]),
         }
         if "xlsx" in res.files:
             files["changes_xlsx"] = str(res.files["xlsx"])

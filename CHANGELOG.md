@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here. Format: [Keep a Changelog](https://keepachangelog.com/), versioning: [SemVer](https://semver.org/).
 
+## [0.2.1] - 2026-11-13
+
+### Added
+- **QGIS plugin** (`qgis/earthdiff_qgis`, QGIS 3.28+ and QGIS 4 / Qt 6, Turkish and English): a panel to pick the area (map view, drawn rectangle or selected polygons, size checked against the 2,000 km² limit) and the dates (a month against the same month of an earlier year), plan or run, and get the change polygons, class raster and before/after images back as styled layers, with every warning and the data attribution in the panel. It runs the earthdiff program of a normal Python installation or `uvx` without QGIS's own Python / GDAL / PROJ environment, so nothing is installed into QGIS. Zip: `python scripts/build_qgis_plugin.py`.
+- `before.tif` and `after.tif`: the true-colour before/after images as georeferenced RGBA GeoTIFFs on the analysis grid (same grid as `change_class.tif`), for GIS software; also listed in the MCP result (`before_tif`, `after_tif`).
+
 ## [0.2.0] - 2026-11-11
 
 ### Added (second round)

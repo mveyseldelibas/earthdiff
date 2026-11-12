@@ -3,7 +3,7 @@
 import os as _os
 from importlib.util import find_spec as _find_spec
 
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 
 
 def _prefer_bundled_proj_data() -> None:

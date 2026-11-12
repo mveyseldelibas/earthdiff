@@ -354,7 +354,7 @@ def test_detect_change_end_to_end(tmp_path):
     assert r["attribution"] == "Contains modified Copernicus Sentinel data 2023, 2024"
     assert r["present_to_user"] and "screening" in " ".join(r["present_to_user"]).lower()
     root = (tmp_path / "out").resolve()
-    for key in ("report_html", "changes_geojson", "summary_json", "before_png", "after_png", "change_map_png", "overview_png", "change_class_tif"):
+    for key in ("report_html", "changes_geojson", "summary_json", "before_png", "after_png", "change_map_png", "overview_png", "change_class_tif", "before_tif", "after_tif"):
         p = Path(r["files"][key])
         assert p.is_file() and p.stat().st_size > 0 and root in p.parents, key
     assert [c for c, _ in out.images] == ["Before  2023-07", "After  2024-07", "Detected changes"]

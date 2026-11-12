@@ -218,7 +218,7 @@ def test_cli_check_and_version():
     out = subprocess.run([sys.executable, "-m", "earthdiff.mcp_server", "--check"], capture_output=True, text=True, timeout=60)
     assert out.returncode == 0 and json.loads(out.stdout)["transport"] == "stdio"
     v = subprocess.run([sys.executable, "-m", "earthdiff.mcp_server", "--version"], capture_output=True, text=True, timeout=60)
-    assert v.stdout.startswith("earthdiff-mcp 0.2.0")
+    assert v.stdout.startswith("earthdiff-mcp 0.2.1")
 
 
 # ------------------------------------------------------------------------------------------------ likely cause, seasonal check, bright surfaces

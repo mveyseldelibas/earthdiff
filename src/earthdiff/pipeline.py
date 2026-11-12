@@ -10,6 +10,7 @@ from typing import Any, Callable
 
 import numpy as np
 import rasterio
+from rasterio.enums import ColorInterp
 from shapely.geometry import mapping
 from shapely.geometry.base import BaseGeometry
 
@@ -377,6 +378,15 @@ def _write_outputs(out, geom, grid, mask, cb, ca, result, thr, opts, before, aft
     files["before"], files["after"] = out / "before.png", out / "after.png"
     save_png(img_b, files["before"])
     save_png(img_a, files["after"])
+    # the same true-colour images on the analysis grid, georeferenced, for GIS software (QGIS plugin, ArcGIS, ...)
+    files["before_tif"], files["after_tif"] = out / "before.tif", out / "after.tif"
+    for rgba, path in ((rgb_b, files["before_tif"]), (rgb_a, files["after_tif"])):
+        with rasterio.open(
+            path, "w", driver="GTiff", height=grid.height, width=grid.width, count=4, dtype="uint8",
+            crs=grid.crs, transform=grid.transform, compress="deflate", photometric="RGB", alpha="YES",
+        ) as dst:
+            dst.write(np.moveaxis(rgba, -1, 0))
+            dst.colorinterp = [ColorInterp.red, ColorInterp.green, ColorInterp.blue, ColorInterp.alpha]
 
     totals = result.totals
     cm = change_map_image(rgb_a, result.classmap, totals)

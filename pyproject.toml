@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "earthdiff"
-version = "0.2.0"
+version = "0.2.1"
 description = "What changed here? Explainable change reports from free Sentinel-2 imagery, for you and for AI assistants (MCP server included). No account, no API key."
 readme = "README.md"
 license = { text = "MIT" }

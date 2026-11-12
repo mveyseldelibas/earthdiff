@@ -48,8 +48,15 @@ def test_end_to_end_outputs(tmp_path):
         geom, parse_period("2023-07"), parse_period("2024-07"), tmp_path, RunOptions(name="synthetic", resolution=20),
         reader=make_reader(), search=fake_search,
     )
-    for name in ("report.html", "changes.geojson", "before.png", "after.png", "change_map.png", "change_class.tif", "summary.json", "overview.png"):
+    for name in ("report.html", "changes.geojson", "before.png", "after.png", "change_map.png", "change_class.tif", "summary.json", "overview.png",
+                 "before.tif", "after.tif"):
         assert (tmp_path / name).stat().st_size > 0, name
+    # the true-colour GeoTIFFs sit on the same grid as the class raster, with an alpha band outside the area
+    import rasterio
+    with rasterio.open(tmp_path / "change_class.tif") as c, rasterio.open(tmp_path / "after.tif") as a:
+        assert a.crs == c.crs and a.transform == c.transform and a.count == 4
+        assert [ci.name for ci in a.colorinterp] == ["red", "green", "blue", "alpha"]
+        assert a.read(4).max() == 255
     fc = json.loads((tmp_path / "changes.geojson").read_text(encoding="utf-8"))
     assert len(fc["features"]) == 1 and fc["features"][0]["properties"]["class"] == "vegetation_loss"
     s = res.summary
