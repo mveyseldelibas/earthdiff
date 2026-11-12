@@ -9,6 +9,8 @@ No account, no API key, no paid service, no black-box model. Works as an [MCP](h
 
 *The GIF is built by `scripts/make_demo_gif.py` from the literal outputs of the MCP tools (`validation/mcp/`).*
 
+**Try a report in your browser, nothing to install:** [example report, Manavgat August 2020 vs August 2024](https://huggingface.co/spaces/mvdelibas/earthdiff-demo) (swipe, scene by scene, 3D, searchable table; Turkish and English).
+
 **Türkçe:** [MCP kurulumu ve kullanım aşağıda](#türkçe)
 
 ## Use it from your AI assistant in 30 seconds
@@ -275,6 +277,8 @@ MIT (c) 2026 Mehmet Veysel Delibaş. See [LICENSE](LICENSE), [CONTRIBUTING](CONT
 ---
 
 # Türkçe
+
+**Kurmadan deneyin:** [örnek rapor, Manavgat Ağustos 2020 ile Ağustos 2024](https://huggingface.co/spaces/mvdelibas/earthdiff-demo) tarayıcıda açılır (önce/sonra kaydırması, sahne sahne, 3B, aranabilir tablo; Türkçe ve İngilizce).
 
 ## Yapay zekâ asistanınıza "uydu gözü" (MCP)
 
