@@ -48,9 +48,10 @@ def find_command(setting: str = "") -> list[str] | None:
     """The command line prefix that runs earthdiff, e.g. ['C:/.../earthdiff.exe'] or ['uvx', '--from', 'earthdiff', 'earthdiff']."""
     setting = (setting or "").strip().strip('"')
     if setting:
-        if os.path.basename(setting).lower().startswith("python"):
+        base = setting.replace("\\", "/").rsplit("/", 1)[-1].lower()  # either separator, whatever the system
+        if base.startswith("python"):
             return [setting, "-m", "earthdiff"]
-        if os.path.basename(setting).lower().startswith("uvx"):
+        if base.startswith("uvx"):
             return [setting, "--from", "earthdiff", "earthdiff"]
         return [setting]
     w = shutil.which("earthdiff")
