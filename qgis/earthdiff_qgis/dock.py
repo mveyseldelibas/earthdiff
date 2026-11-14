@@ -30,7 +30,7 @@ def _polygon_geom_type():
         from qgis.core import Qgis
         return Qgis.GeometryType.Polygon
     except AttributeError:
-        return QgsWkbTypes.PolygonGeometry
+        return QgsWkbTypes.GeometryType.PolygonGeometry
 
 
 def _polygon_filter():
@@ -39,7 +39,7 @@ def _polygon_filter():
         return Qgis.LayerFilter.PolygonLayer
     except AttributeError:
         from qgis.core import QgsMapLayerProxyModel
-        return QgsMapLayerProxyModel.PolygonLayer
+        return QgsMapLayerProxyModel.Filter.PolygonLayer
 
 
 class _Outline:

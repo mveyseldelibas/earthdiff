@@ -2,10 +2,9 @@
 name=earthdiff
 qgisMinimumVersion=3.28
 qgisMaximumVersion=4.99
-supportsQt6=True
 description=What changed here? Change detection from free Sentinel-2 imagery: vegetation loss and gain, new water, water loss, new bare soil / built-up, in hectares, with warnings.
 about=Pick an area (map view, a drawn rectangle or selected polygons) and two dates. earthdiff compares free Sentinel-2 L2A imagery of the two periods and adds the change polygons, a class raster and true-colour before/after images to the map, plus an offline HTML report (swipe, scene by scene, 3D). Vegetation loss gets a likely-cause hint (fire-like / clearing-like / unclear). No account and no API key. A screening tool: it shows what changed, not why. Needs the earthdiff program in a normal Python installation (pip install earthdiff) or uv (uvx); the plugin finds it and runs it in the background. Data: contains modified Copernicus Sentinel data.
-version=0.1.2
+version=0.1.3
 author=Mehmet Veysel Delibaş
 email=mveyseldelibas@gmail.com
 homepage=https://github.com/mveyseldelibas/earthdiff/tree/main/qgis
@@ -16,6 +15,7 @@ category=Raster
 icon=icon.png
 experimental=True
 deprecated=False
-changelog=0.1.2 "New analysis" button; the area outline is black on a white halo (it was the colour of vegetation loss); closing the panel clears the drawn area and the result, and offers to remove the result layers and go back to the earlier map view.
+changelog=0.1.3 Qt 6 check of the plugin repository: scoped enums in the QGIS 3 fallbacks; supportsQt6 removed (qgisMaximumVersion 4.99 says it).
+    0.1.2 "New analysis" button; the area outline is black on a white halo (it was the colour of vegetation loss); closing the panel clears the drawn area and the result, and offers to remove the result layers and go back to the earlier map view.
     0.1.1 the drawn rectangle is clearly visible while dragging and afterwards (thick outline).
     0.1.0 first version: area from the map view, a drawn rectangle or selected polygons; plan and run; styled layers; Turkish and English.

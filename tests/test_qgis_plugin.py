@@ -47,7 +47,7 @@ def test_metadata_has_what_the_plugin_repository_needs():
     g = meta["general"]
     for key in ("name", "qgisMinimumVersion", "description", "about", "version", "author", "email", "repository", "tracker", "icon", "category"):
         assert g.get(key), key
-    assert g["supportsQt6"] == "True" and g["qgisMaximumVersion"].startswith("4.")
+    assert "supportsQt6" not in g and g["qgisMaximumVersion"].startswith("4.")  # QGIS 4 support comes from qgisMaximumVersion
     assert (PLUGIN / g["icon"]).is_file() and (PLUGIN / "LICENSE").is_file()
     emails = [ln for ln in (PLUGIN / "metadata.txt").read_text(encoding="utf-8").splitlines() if "@" in ln]
     # plugins.qgis.org writes to this address about the plugin, so it must be a reachable one; it is the only address there
