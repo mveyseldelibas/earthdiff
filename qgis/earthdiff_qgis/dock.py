@@ -10,11 +10,11 @@ from pathlib import Path
 
 from qgis.core import (QgsCoordinateReferenceSystem, QgsCoordinateTransform, QgsDistanceArea, QgsGeometry, QgsProject,
                        QgsRectangle, QgsSettings, QgsWkbTypes)
-from qgis.gui import QgsMapLayerComboBox, QgsMapToolExtent, QgsRubberBand
-from qgis.PyQt.QtCore import Qt, QUrl
+from qgis.gui import QgsMapLayerComboBox, QgsMapTool, QgsRubberBand
+from qgis.PyQt.QtCore import Qt, QUrl, pyqtSignal
 from qgis.PyQt.QtGui import QColor, QDesktopServices
 from qgis.PyQt.QtWidgets import (QButtonGroup, QCheckBox, QComboBox, QDockWidget, QDoubleSpinBox, QFileDialog, QFormLayout,
-                                 QGroupBox, QHBoxLayout, QLabel, QLineEdit, QPlainTextEdit, QProgressBar, QPushButton,
+                                 QGroupBox, QHBoxLayout, QLabel, QLineEdit, QMessageBox, QPlainTextEdit, QProgressBar, QPushButton,
                                  QRadioButton, QScrollArea, QSpinBox, QVBoxLayout, QWidget)
 
 from . import layers
@@ -42,6 +42,80 @@ def _polygon_filter():
         return QgsMapLayerProxyModel.PolygonLayer
 
 
+class _Outline:
+    """The area outline: a black line on a white halo, readable on any base map and unlike every result colour."""
+
+    def __init__(self, canvas):
+        self.canvas = canvas
+        self.halo, self.line = QgsRubberBand(canvas, _polygon_geom_type()), QgsRubberBand(canvas, _polygon_geom_type())
+        for band, colour, width in ((self.halo, QColor(255, 255, 255, 230), 6), (self.line, QColor(0, 0, 0, 255), 2)):
+            band.setStrokeColor(colour)
+            band.setFillColor(QColor(0, 0, 0, 0))  # no fill: the map and the results stay readable inside
+            band.setWidth(width)
+
+    def setToGeometry(self, geom):
+        for band in (self.halo, self.line):
+            band.setToGeometry(geom, None)
+
+    def reset(self):
+        for band in (self.halo, self.line):
+            band.reset(_polygon_geom_type())
+
+    def numberOfVertices(self) -> int:
+        return self.line.numberOfVertices()
+
+    def remove(self):
+        self.reset()
+        for band in (self.halo, self.line):
+            self.canvas.scene().removeItem(band)
+
+
+class _RectTool(QgsMapTool):
+    """Draw a rectangle by dragging; the outline is shown while dragging (QgsMapToolExtent's own is too faint)."""
+    drawn = pyqtSignal(QgsRectangle)
+
+    def __init__(self, canvas):
+        super().__init__(canvas)
+        self.start = None
+        self.band = _Outline(canvas)
+        self.setCursor(Qt.CursorShape.CrossCursor)
+
+    def _rect(self, e) -> QgsRectangle:
+        r = QgsRectangle(self.start, e.mapPoint())
+        r.normalize()
+        return r
+
+    def canvasPressEvent(self, e):
+        if e.button() == Qt.MouseButton.LeftButton:
+            self.start = e.mapPoint()
+
+    def canvasMoveEvent(self, e):
+        if self.start is not None:
+            self.band.setToGeometry(QgsGeometry.fromRect(self._rect(e)))
+
+    def canvasReleaseEvent(self, e):
+        if self.start is None or e.button() != Qt.MouseButton.LeftButton:
+            return
+        r = self._rect(e)
+        self.start = None
+        self.band.reset()
+        if r.width() > 0 and r.height() > 0:
+            self.drawn.emit(r)
+
+    def keyPressEvent(self, e):
+        if e.key() == Qt.Key.Key_Escape:
+            self.start = None
+            self.band.reset()
+
+    def deactivate(self):
+        self.start = None
+        self.band.reset()
+        super().deactivate()
+
+    def remove_band(self):
+        self.band.remove()
+
+
 def _slug(s: str) -> str:
     s = re.sub(r"[^\w\-]+", "-", s.strip(), flags=re.UNICODE).strip("-").lower()
     return s[:40] or "earthdiff"
@@ -63,10 +137,9 @@ class EarthdiffDock(QDockWidget):
         self.job: dict | None = None
         self.tool = None
         self.prev_tool = None
-        self.band = QgsRubberBand(self.canvas, _polygon_geom_type())
-        self.band.setColor(QColor(213, 94, 0, 220))
-        self.band.setFillColor(QColor(213, 94, 0, 30))
-        self.band.setWidth(2)
+        self.band = _Outline(self.canvas)
+        self.result_runs: list[list[str]] = []  # layer ids added by each run of this panel
+        self.view_before = None  # (extent, crs) of the map before the first of those runs
         self._build()
         self.canvas.extentsChanged.connect(self._area_changed)
         self.canvas.destinationCrsChanged.connect(self._area_changed)
@@ -215,13 +288,16 @@ class EarthdiffDock(QDockWidget):
         self.result.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
         v.addWidget(self.result)
         row = QHBoxLayout()
-        self.b_open, self.b_folder = QPushButton(t("open")), QPushButton(t("folder"))
+        self.b_open, self.b_folder, self.b_new = QPushButton(t("open")), QPushButton(t("folder")), QPushButton(t("new"))
         self.b_open.clicked.connect(lambda: self._open("report.html"))
         self.b_folder.clicked.connect(lambda: self._open(""))
         for b in (self.b_open, self.b_folder):
             b.setEnabled(False)
             row.addWidget(b)
         row.addStretch(1)
+        self.b_new.setToolTip(t("new_tip"))
+        self.b_new.clicked.connect(self.new_analysis)
+        row.addWidget(self.b_new)
         v.addLayout(row)
         self.log = QPlainTextEdit()
         self.log.setReadOnly(True)
@@ -250,8 +326,8 @@ class EarthdiffDock(QDockWidget):
     def _start_draw(self):
         self.r_draw.setChecked(True)
         if self.tool is None:
-            self.tool = QgsMapToolExtent(self.canvas)
-            self.tool.extentChanged.connect(self._drawn)
+            self.tool = _RectTool(self.canvas)
+            self.tool.drawn.connect(self._drawn)
         self.prev_tool = self.canvas.mapTool()
         self.canvas.setMapTool(self.tool)
         self.status.setText(t("draw_hint"))
@@ -260,12 +336,17 @@ class EarthdiffDock(QDockWidget):
         if rect is None or rect.isEmpty():
             return
         self.drawn, self.drawn_crs = QgsRectangle(rect), self.canvas.mapSettings().destinationCrs()
+        self._stop_draw()
+        self.status.setText("")
+        self._area_changed()
+
+    def _stop_draw(self):
+        if self.tool is None or self.canvas.mapTool() is not self.tool:
+            return
         if self.prev_tool is not None and self.prev_tool is not self.tool:
             self.canvas.setMapTool(self.prev_tool)
         else:
             self.canvas.unsetMapTool(self.tool)
-        self.status.setText("")
-        self._area_changed()
 
     def _current_area(self) -> tuple[QgsGeometry | None, str]:
         """The area in WGS84 and a short default name, or (None, reason)."""
@@ -300,7 +381,7 @@ class EarthdiffDock(QDockWidget):
     def _area_changed(self, *_):
         g, why = self._current_area()
         self.aoi_wgs84 = None
-        self.band.reset(_polygon_geom_type())
+        self.band.reset()
         if g is None:
             self.l_size.setText(why)
             return
@@ -311,12 +392,12 @@ class EarthdiffDock(QDockWidget):
         else:
             self.l_size.setText(t("size", km2=txt))
             self.aoi_wgs84 = g
-        if self.area_mode.checkedId() != 0:  # the map view itself needs no outline
+        if self.area_mode.checkedId() != 0 and self.isVisible():  # the map view itself needs no outline
             show = QgsGeometry(g)
             dst = self.canvas.mapSettings().destinationCrs()
             if dst != WGS84:
                 show.transform(QgsCoordinateTransform(WGS84, dst, QgsProject.instance()))
-            self.band.setToGeometry(show, None)
+            self.band.setToGeometry(show)
 
     # ------------------------------------------------------------------ dates and paths
     def _fill_years(self):
@@ -388,6 +469,8 @@ class EarthdiffDock(QDockWidget):
         args = run_args(str(aoi), after, before, str(out), name, self.sens.currentData(), self.mmu.value(),
                         self.c_cause.isChecked(), self.c_seasonal.isChecked(), self.c_terrain.isChecked(), plan=plan)
         self.job = {"plan": plan, "out": None if plan else str(out), "name": name}
+        if not plan and not self.result_runs:
+            self.view_before = (QgsRectangle(self.canvas.extent()), self.canvas.mapSettings().destinationCrs())
         self.log.clear()
         self.result.setText("")
         for b in (self.b_open, self.b_folder):
@@ -401,6 +484,7 @@ class EarthdiffDock(QDockWidget):
         self.b_stop.setEnabled(on)
         self.b_run.setEnabled(not on)
         self.b_plan.setEnabled(not on)
+        self.b_new.setEnabled(not on)
 
     def _log(self, s: str):
         self.log.appendPlainText(s)
@@ -424,6 +508,7 @@ class EarthdiffDock(QDockWidget):
             self._log(f"could not add the layers: {exc!r}")
             added = []
         if added:
+            self.result_runs.append([lyr.id() for lyr in added])
             ext = added[0].extent()
             tr = QgsCoordinateTransform(added[0].crs(), self.canvas.mapSettings().destinationCrs(), QgsProject.instance())
             self.canvas.setExtent(tr.transformBoundingBox(ext).buffered(ext.width() * 0.05 if added[0].crs().isGeographic() else 200))
@@ -466,13 +551,78 @@ class EarthdiffDock(QDockWidget):
             rows.append(f"<small>{e(s['attribution'])}</small>")
         return "<br><br>".join(rows)
 
+    # ------------------------------------------------------------------ new analysis / closing
+    def new_analysis(self, *_):
+        """Back to a clean panel; the result layers of this panel go too, if the user agrees."""
+        if self.runner.busy():
+            self.status.setText(t("busy"))
+            return
+        self._stop_draw()
+        project = QgsProject.instance()
+        runs = [[i for i in run if project.mapLayer(i) is not None] for run in self.result_runs]
+        runs = [r for r in runs if r]
+        if runs:
+            box = QMessageBox(QMessageBox.Icon.Question, t("clear_title"), t("clear_q", n=len(runs)), parent=self)
+            rm = box.addButton(t("remove"), QMessageBox.ButtonRole.AcceptRole)
+            box.addButton(t("keep"), QMessageBox.ButtonRole.RejectRole)
+            box.setDefaultButton(rm)
+            box.exec()
+            if box.clickedButton() is rm:
+                self._remove_results([i for r in runs for i in r])
+        self.result_runs, self.view_before = [], None
+        self.job, self.drawn, self.drawn_crs = None, None, None
+        self.r_extent.setChecked(True)
+        self.name.clear()
+        for w in (self.result, self.status):
+            w.setText("")
+        self.log.clear()
+        for b in (self.b_open, self.b_folder):
+            b.setEnabled(False)
+        self._area_changed()
+
+    def _remove_results(self, ids: list[str]):
+        project = QgsProject.instance()
+        root = project.layerTreeRoot()
+        groups = []
+        for i in ids:
+            node = root.findLayer(i)
+            parent = node.parent() if node is not None else None
+            if parent is not None and parent is not root and all(parent is not g for g in groups):
+                groups.append(parent)
+        project.removeMapLayers(ids)
+        for g in groups:
+            if not g.children() and g.parent() is not None:
+                g.parent().removeChildNode(g)
+        if self.view_before is not None:
+            ext, crs = self.view_before
+            dst = self.canvas.mapSettings().destinationCrs()
+            if crs != dst:
+                ext = QgsCoordinateTransform(crs, dst, project).transformBoundingBox(ext)
+            self.canvas.setExtent(ext)
+        self.canvas.refresh()
+
+    def closeEvent(self, e):  # the panel's close button or the toolbar button
+        self._stop_draw()
+        if not self.runner.busy():  # a running analysis keeps going and adds its layers when done
+            self.new_analysis()
+        super().closeEvent(e)
+
+    def hideEvent(self, e):
+        self.band.reset()
+        super().hideEvent(e)
+
+    def showEvent(self, e):
+        super().showEvent(e)
+        self._area_changed()
+
     # ------------------------------------------------------------------ cleanup
     def cleanup(self):
         self.runner.stop()
-        self.band.reset(_polygon_geom_type())
-        self.canvas.scene().removeItem(self.band)
-        if self.tool is not None and self.canvas.mapTool() is self.tool:
-            self.canvas.unsetMapTool(self.tool)
+        self.band.remove()
+        if self.tool is not None:
+            if self.canvas.mapTool() is self.tool:
+                self.canvas.unsetMapTool(self.tool)
+            self.tool.remove_band()
         try:
             self.canvas.extentsChanged.disconnect(self._area_changed)
             self.canvas.destinationCrsChanged.disconnect(self._area_changed)

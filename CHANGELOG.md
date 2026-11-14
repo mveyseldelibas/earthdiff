@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here. Format: [Keep a Changelog](https://keepachangelog.com/), versioning: [SemVer](https://semver.org/).
 
+## [Unreleased]
+
+### Fixed
+- QGIS plugin 0.1.1: the drawn rectangle was hard to see (QGIS's own extent tool draws a faint outline). The plugin now draws it itself while dragging and afterwards; Esc cancels a drag. From 0.1.2 the outline is black on a white halo, readable on any base map and unlike every result colour (the orange of 0.1.1 was the colour of vegetation loss).
+- QGIS plugin 0.1.2: after an analysis the panel and the map could not go back to how they were. A "New analysis" button now clears the drawn area and the result; it and closing the panel ask whether to remove that panel's result layers (the files stay in the output folder) and go back to the earlier map view.
+
 ## [0.2.1] - 2026-11-13
 
 ### Added

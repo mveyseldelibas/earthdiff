@@ -22,18 +22,21 @@ class EarthdiffPlugin:
         icon = QIcon(str(Path(__file__).with_name("icon.png")))
         self.action = QAction(icon, t("menu"), self.iface.mainWindow())
         self.action.setCheckable(True)
-        self.action.toggled.connect(self._toggle)
+        self.action.triggered.connect(self._toggle)  # only the user's click; visibilityChanged just syncs the check mark
         self.iface.addRasterToolBarIcon(self.action)
         self.iface.addPluginToRasterMenu("earthdiff", self.action)
 
     def _toggle(self, on: bool):
-        if on and self.dock is None:
-            from .dock import EarthdiffDock
-            self.dock = EarthdiffDock(self.iface, self.iface.mainWindow())
-            self.iface.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.dock)
-            self.dock.visibilityChanged.connect(lambda vis: self.action.setChecked(vis))
-        if self.dock is not None:
-            self.dock.setVisible(on)
+        if on:
+            if self.dock is None:
+                from .dock import EarthdiffDock
+                self.dock = EarthdiffDock(self.iface, self.iface.mainWindow())
+                self.iface.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.dock)
+                self.dock.visibilityChanged.connect(lambda vis: self.action.setChecked(vis))
+            self.dock.show()
+            self.dock.raise_()
+        elif self.dock is not None:
+            self.dock.close()  # same as the panel's own close button: clears the drawing, offers to remove the results
 
     def unload(self):
         if self.dock is not None:
