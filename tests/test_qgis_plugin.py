@@ -45,11 +45,13 @@ def test_metadata_has_what_the_plugin_repository_needs():
     meta = configparser.ConfigParser()
     meta.read(PLUGIN / "metadata.txt", encoding="utf-8")
     g = meta["general"]
-    for key in ("name", "qgisMinimumVersion", "description", "about", "version", "author", "repository", "tracker", "icon", "category"):
+    for key in ("name", "qgisMinimumVersion", "description", "about", "version", "author", "email", "repository", "tracker", "icon", "category"):
         assert g.get(key), key
     assert g["supportsQt6"] == "True" and g["qgisMaximumVersion"].startswith("4.")
     assert (PLUGIN / g["icon"]).is_file() and (PLUGIN / "LICENSE").is_file()
-    assert "@" not in (PLUGIN / "metadata.txt").read_text(encoding="utf-8")  # no e-mail address in the repository
+    emails = [ln for ln in (PLUGIN / "metadata.txt").read_text(encoding="utf-8").splitlines() if "@" in ln]
+    # the plugin repository needs an e-mail; only the public GitHub no-reply address may be there, never a personal one
+    assert emails == ["email=281763465+mveyseldelibas@users.noreply.github.com"]
 
 
 def test_plugin_code_runs_on_the_python_of_qgis_3_28():
