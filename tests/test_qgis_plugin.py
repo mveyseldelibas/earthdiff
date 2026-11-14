@@ -50,8 +50,8 @@ def test_metadata_has_what_the_plugin_repository_needs():
     assert g["supportsQt6"] == "True" and g["qgisMaximumVersion"].startswith("4.")
     assert (PLUGIN / g["icon"]).is_file() and (PLUGIN / "LICENSE").is_file()
     emails = [ln for ln in (PLUGIN / "metadata.txt").read_text(encoding="utf-8").splitlines() if "@" in ln]
-    # the plugin repository needs an e-mail; only the public GitHub no-reply address may be there, never a personal one
-    assert emails == ["email=281763465+mveyseldelibas@users.noreply.github.com"]
+    # plugins.qgis.org writes to this address about the plugin, so it must be a reachable one; it is the only address there
+    assert emails == ["email=mveyseldelibas@gmail.com"]
 
 
 def test_plugin_code_runs_on_the_python_of_qgis_3_28():

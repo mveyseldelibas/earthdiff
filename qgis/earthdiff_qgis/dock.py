@@ -538,8 +538,8 @@ class EarthdiffDock(QDockWidget):
             rows.append(e(t("comparable", p=round(vf * 100))))
         lc = (s.get("likely_cause") or {}).get("totals") or {}
         if lc and (tot.get("vegetation_loss") or {}).get("area_ha"):
-            ha = lambda k: num((lc.get(k) or {}).get("area_ha", 0))
-            rows.append(e(t("cause_line", f=ha("fire-like"), c=ha("clearing-like"), u=ha("unclear"))))
+            ha = {k: num((lc.get(k) or {}).get("area_ha", 0)) for k in ("fire-like", "clearing-like", "unclear")}
+            rows.append(e(t("cause_line", f=ha["fire-like"], c=ha["clearing-like"], u=ha["unclear"])))
         sc = s.get("seasonal_check") or {}
         ls = sc.get("likely_seasonal") if isinstance(sc, dict) else None
         if isinstance(ls, dict) and "area_ha" in ls:

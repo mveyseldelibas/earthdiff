@@ -60,8 +60,8 @@ def find_command(setting: str = "") -> list[str] | None:
     c = _candidates()
     if c:
         return c[0]
-    uvx = shutil.which("uvx") or next((p for p in (str(Path.home() / ".local" / "bin" / ("uvx" + EXE)),
-                                                    str(Path.home() / ".cargo" / "bin" / ("uvx" + EXE))) if os.path.isfile(p)), None)
+    homes = (Path.home() / ".local" / "bin" / ("uvx" + EXE), Path.home() / ".cargo" / "bin" / ("uvx" + EXE))
+    uvx = shutil.which("uvx") or next((str(p) for p in homes if p.is_file()), None)
     if uvx:
         return [uvx, "--from", "earthdiff", "earthdiff"]
     return None
