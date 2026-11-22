@@ -19,9 +19,10 @@ opens with one click. No account, no API key.
 
    The plugin finds it on `PATH`, in the usual Python `Scripts` folders and in `~/.local/bin`; you can also pick the program in
    the panel (*Output and earthdiff command*). It starts earthdiff without QGIS's own Python, GDAL and PROJ settings.
-2. **The plugin.** Until it is in the QGIS plugin repository: download `earthdiff_qgis-<version>.zip` from the
-   [releases](https://github.com/mveyseldelibas/earthdiff/releases) (or build it with `python scripts/build_qgis_plugin.py`),
-   then *Plugins > Manage and Install Plugins > Install from ZIP*. It appears under *Raster > earthdiff* and on the raster toolbar.
+2. **The plugin.** In QGIS: *Plugins > Manage and Install Plugins*, search for **earthdiff** and install it (it is in the official
+   QGIS plugin repository). Without internet access to the repository, download `earthdiff_qgis-<version>.zip` from the
+   [releases](https://github.com/mveyseldelibas/earthdiff/releases) and use *Install from ZIP*. It appears under *Raster > earthdiff*
+   and on the raster toolbar.
 
 Works with QGIS 3.28 or newer and QGIS 4 (Qt 6). The interface is Turkish or English, following QGIS's language.
 
@@ -66,9 +67,9 @@ Hesap ya da API anahtarı gerekmez.
    [uv](https://docs.astral.sh/uv/) kurun, eklenti earthdiff'i `uvx` ile çalıştırır (ilk açılışta bir kez yaklaşık 200 MB indirir).
    Eklenti programı `PATH`'te, olağan Python `Scripts` klasörlerinde ve `~/.local/bin`'de arar; paneldeki *Çıktı ve earthdiff komutu*
    bölümünden elle de seçebilirsiniz.
-2. **Eklenti.** QGIS eklenti deposuna girene kadar: [sürümlerden](https://github.com/mveyseldelibas/earthdiff/releases)
-   `earthdiff_qgis-<sürüm>.zip` dosyasını indirin (ya da `python scripts/build_qgis_plugin.py` ile oluşturun), sonra
-   *Eklentiler > Eklentileri Yönet ve Kur > ZIP'ten kur*. *Raster > earthdiff* menüsünde ve raster araç çubuğunda görünür.
+2. **Eklenti.** QGIS'te *Eklentiler > Eklentileri Yönet ve Kur* penceresinde **earthdiff** diye aratıp kurun (resmî QGIS eklenti
+   deposunda). Depoya internetten ulaşılamıyorsa [sürümlerden](https://github.com/mveyseldelibas/earthdiff/releases)
+   `earthdiff_qgis-<sürüm>.zip` dosyasını indirip *ZIP'ten kur* ile kurun. *Raster > earthdiff* menüsünde ve raster araç çubuğunda görünür.
 
 QGIS 3.28 ve üstü ile QGIS 4 (Qt 6) desteklenir. Arayüz QGIS'in diline göre Türkçe ya da İngilizcedir.
 
